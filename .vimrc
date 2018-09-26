@@ -2,6 +2,7 @@
 set t_Co=256
 set background=dark
 set noerrorbells visualbell t_vb=
+set nu
 autocmd GUIEnter * set visualbell t_vb=
 syntax on
 
@@ -16,6 +17,9 @@ call vundle#begin()
 " Add plugins below this line
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'nvie/vim-flake8'
+Plugin 'w0rp/ale'
 
 " Add plugins above this line
 call vundle#end()
