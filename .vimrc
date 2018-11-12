@@ -5,7 +5,6 @@ set noerrorbells visualbell t_vb=
 set nu
 autocmd GUIEnter * set visualbell t_vb=
 syntax on
-colo gruvbox
 
 
 " Plugin Management
@@ -22,6 +21,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'w0rp/ale'
 Plugin 'reedes/vim-pencil'
 " Plugin 'tmhedberg/SimpylFold'
+Plugin 'morhetz/gruvbox'
 "-----Add plugins above this line-----"
 
 call vundle#end()
@@ -38,6 +38,7 @@ set encoding=utf-8
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>t  :NERDTree<CR>
+colo gruvbox
 
 " Python code folding
 nnoremap <space> za
