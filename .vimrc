@@ -3,6 +3,7 @@ set t_Co=256
 set background=dark
 set noerrorbells visualbell t_vb=
 set nu
+set guifont=SAS_Monospace:h9:cANSI:qDRAFT
 autocmd GUIEnter * set visualbell t_vb=
 syntax on
 
@@ -22,6 +23,9 @@ Plugin 'w0rp/ale'
 Plugin 'reedes/vim-pencil'
 " Plugin 'tmhedberg/SimpylFold'
 Plugin 'morhetz/gruvbox'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 "-----Add plugins above this line-----"
 
 call vundle#end()
@@ -34,11 +38,12 @@ au BufNewFile,BufRead *.py
     \ autoindent fileformat=unix
 set encoding=utf-8
 
-" Convenience commands
+" Convenience
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>t  :NERDTree<CR>
 colo gruvbox
+
 
 " Python code folding
 nnoremap <space> za
