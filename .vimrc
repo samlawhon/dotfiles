@@ -26,6 +26,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+Plugin 'cjrh/vim-conda'
 "-----Add plugins above this line-----"
 
 call vundle#end()
@@ -48,5 +49,5 @@ colo gruvbox
 " Python code folding
 nnoremap <space> za
 vnoremap <space> zf
-autocmd FileType python setlocal foldenable foldmethod=syntax
+autocmd FileType python setlocal foldenable foldmethod=manual
 set foldtext=getline(v:foldstart+1)
