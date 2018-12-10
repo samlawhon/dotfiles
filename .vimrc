@@ -27,7 +27,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'cjrh/vim-conda'
-Plugin 'kkoenig/wimproved.vim' "Uncomment this if on Windows
+" Plugin 'kkoenig/wimproved.vim' "Uncomment this if on Windows
 "-----Add plugins above this line-----"
 
 call vundle#end()
