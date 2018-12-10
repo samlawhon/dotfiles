@@ -43,6 +43,10 @@ set encoding=utf-8
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>t  :NERDTree<CR>
+nnoremap <F2> <Esc>:HardPencil<CR>
+nnoremap <F3> <Esc>:NoPencil<CR>
+let g:airline_section_x = '%{PencilMode()}'
+let g:pencil#mode_indicators = {'hard': 'H', 'auto': 'A', 'soft': 'S', 'off': 'OFF'}
 colo gruvbox
 
 
@@ -51,3 +55,8 @@ nnoremap <space> za
 vnoremap <space> zf
 autocmd FileType python setlocal foldenable foldmethod=manual
 set foldtext=getline(v:foldstart+1)
+
+" Gui Options
+set guioptions-=m "menu bar
+set guioptions-=T "tool bar
+set guioptions-=r "scroll bar
