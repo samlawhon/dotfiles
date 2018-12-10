@@ -27,6 +27,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'cjrh/vim-conda'
+Plugin 'kkoenig/wimproved.vim' "Uncomment this if on Windows
 "-----Add plugins above this line-----"
 
 call vundle#end()
@@ -45,6 +46,7 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>t  :NERDTree<CR>
 nnoremap <F2> <Esc>:HardPencil<CR>
 nnoremap <F3> <Esc>:NoPencil<CR>
+nnoremap <F11> <Esc>:WToggleFullscreen<CR>
 let g:airline_section_x = '%{PencilMode()}'
 let g:pencil#mode_indicators = {'hard': 'H', 'auto': 'A', 'soft': 'S', 'off': 'OFF'}
 colo gruvbox
