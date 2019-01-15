@@ -47,9 +47,14 @@ map <leader>t  :NERDTree<CR>
 nnoremap <F2> <Esc>:HardPencil<CR>
 nnoremap <F3> <Esc>:NoPencil<CR>
 nnoremap <F11> <Esc>:WToggleFullscreen<CR>
+colo gruvbox
+
+
+" airline
 let g:airline_section_x = '%{PencilMode()}'
 let g:pencil#mode_indicators = {'hard': 'H', 'auto': 'A', 'soft': 'S', 'off': 'OFF'}
-colo gruvbox
+
+let g:airline_powerline_fonts = 1
 
 
 " Python code folding
