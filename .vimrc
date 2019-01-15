@@ -3,7 +3,7 @@ set t_Co=256
 set background=dark
 set noerrorbells visualbell t_vb=
 set nu
-set guifont=SAS_Monospace:h9:cANSI:qDRAFT
+set guifont=DejaVu_Sans_Mono_for_Powerline:h9:cANSI:qDRAFT
 autocmd GUIEnter * set visualbell t_vb=
 syntax on
 
@@ -27,7 +27,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'cjrh/vim-conda'
-" Plugin 'kkoenig/wimproved.vim' "Uncomment this if on Windows
+Plugin 'kkoenig/wimproved.vim' "Uncomment this if on Windows
 "-----Add plugins above this line-----"
 
 call vundle#end()
@@ -36,7 +36,7 @@ filetype plugin indent on
 
 " PEP 8 Checks
 au BufNewFile,BufRead *.py
-    \ set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab
+    \ set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 expandtab
     \ autoindent fileformat=unix
 set encoding=utf-8
 
