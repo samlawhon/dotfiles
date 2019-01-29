@@ -15,7 +15,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 "-----Add plugins below this line-----"
-Plugin 'gmarik/Vundle.vim'
+" Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'nvie/vim-flake8'
@@ -26,8 +26,9 @@ Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
-Plugin 'cjrh/vim-conda'
-Plugin 'kkoenig/wimproved.vim' "Uncomment this if on Windows
+" Plugin 'cjrh/vim-conda'
+" Plugin 'kkoenig/wimproved.vim' "Uncomment this if on Windows
+Plugin 'Raimondi/delimitMate'
 "-----Add plugins above this line-----"
 
 call vundle#end()
@@ -35,9 +36,13 @@ filetype plugin indent on
 
 
 " PEP 8 Checks
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 expandtab
-    \ autoindent fileformat=unix
+augroup PEP
+    autocmd!
+    autocmd BufNewFile,BufRead *.c,*.py,*.h,*.cpp,*.hpp
+        \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 expandtab
+        \ autoindent fileformat=unix
+augroup END
+
 set encoding=utf-8
 
 " Convenience
@@ -47,6 +52,11 @@ map <leader>t  :NERDTree<CR>
 nnoremap <F2> <Esc>:HardPencil<CR>
 nnoremap <F3> <Esc>:NoPencil<CR>
 nnoremap <F11> <Esc>:WToggleFullscreen<CR>
+nnoremap <leader><Space> :tabnext<CR>
+
+
+" Colorscheme
+let g:gruvbox_contrast_dark = 'hard'
 colo gruvbox
 
 
