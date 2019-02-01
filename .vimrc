@@ -1,4 +1,10 @@
 " =============================================================================
+"                           EARLY STACK VARIABLES
+" =============================================================================
+let g:conda_startup_msg_suppress = 1
+
+
+" =============================================================================
 "                             PLUGIN MANAGEMENT
 " =============================================================================
 set nocompatible
@@ -17,6 +23,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'cjrh/vim-conda'
 Plugin 'Raimondi/delimitMate'
+Plugin 'flazz/vim-colorschemes'
 "--------------------- Add plugins above this line ---------------------------"
 call vundle#end()
 filetype plugin indent on
@@ -26,6 +33,7 @@ filetype plugin indent on
 "                                 VISUALS
 " =============================================================================
 set encoding=utf-8
+set term=screen-256color
 set t_Co=256
 set background=dark
 set noerrorbells visualbell t_vb=
@@ -35,6 +43,13 @@ autocmd GUIEnter * set visualbell t_vb=
 syntax on
 let g:gruvbox_contrast_dark = 'hard'
 colo gruvbox
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
 
 
 " =============================================================================
