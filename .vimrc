@@ -24,6 +24,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'cjrh/vim-conda'
 Plugin 'Raimondi/delimitMate'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'kkoenig/wimproved.vim'
 "--------------------- Add plugins above this line ---------------------------"
 call vundle#end()
 filetype plugin indent on
@@ -33,12 +34,12 @@ filetype plugin indent on
 "                                 VISUALS
 " =============================================================================
 set encoding=utf-8
-set term=screen-256color
+" set term=screen-256color  " Use this in terminal or terminal emulators
 set t_Co=256
 set background=dark
 set noerrorbells visualbell t_vb=
 set nu
-set guifont=DejaVu_Sans_Mono_for_Powerline:h9:cANSI:qDRAFT
+set guifont=Droid_Sans_Mono_Dotted_for_Powe:h9:cANSI:qDRAFT
 autocmd GUIEnter * set visualbell t_vb=
 syntax on
 let g:gruvbox_contrast_dark = 'hard'
@@ -62,21 +63,34 @@ augroup PEP
         \ autoindent fileformat=unix
 augroup END
 
-
-
 " =============================================================================
 "                           CONVENIENCE MAPS/REMAPS
 " =============================================================================
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-map <leader>t  :NERDTree<CR>
-nnoremap <space> za
-vnoremap <space> zf
-nnoremap <F2> <Esc>:HardPencil<CR>
-nnoremap <F3> <Esc>:NoPencil<CR>
-nnoremap <F11> <Esc>:set lines=999<CR>:set columns=999<CR>
-nnoremap <leader><Space> :tabnext<CR>
 set backspace=indent,eol,start
+
+"        Shortcut          Remapped command
+"        --------          ----------------
+map      <leader>g         :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map      <leader>t         :NERDTree<CR>
+nnoremap <leader>1         yypVr=
+nnoremap <C-Tab>           <Esc>:tabn<CR>
+nnoremap <C-S-Tab>         <Esc>:tabp<CR>
+nnoremap <space>           za
+vnoremap <space>           zf
+nnoremap <F2>              <Esc>:HardPencil<CR>
+nnoremap <F3>              <Esc>:NoPencil<CR>
+nnoremap <F11>             <Esc>:set lines=999<CR>:set columns=999<CR>
+nnoremap <leader><Space>   <Esc>:tabnext<CR>
+nnoremap <F5>              <Esc>:Gstatus<CR>
+nnoremap <C-F1>             1gt
+nnoremap <C-F2>             2gt
+nnoremap <C-F3>             3gt
+nnoremap <C-F4>             4gt
+nnoremap <C-S-F1>           5gt
+nnoremap <C-S-F2>           6gt
+nnoremap <C-S-F3>           7gt
+nnoremap <C-S-F4>           8gt
 
 
 " =============================================================================
