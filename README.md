@@ -14,7 +14,7 @@ Before you can use this vimrc, make sure to install:
    `~/.vim/colors/gruvbox`. (Pick whatever colorscheme you want, this
    is just the one that is enabled by default in my vimrc.)
 3. [Powerline fonts](https://github.com/powerline/fonts). For use with
-   [Airline](https://githu.com/vim-airline/vim-airline). If on windows,
+   [Airline](https://github.com/vim-airline/vim-airline). If on windows,
    check out [these instructions](
    https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58)
    for how to install the powerline fonts.
