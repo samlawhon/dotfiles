@@ -2,6 +2,7 @@
 "                           EARLY STACK VARIABLES
 " =============================================================================
 let g:conda_startup_msg_suppress = 1
+let $PYTHONPATH = $ProgramFiles."\\Python"
 
 
 " =============================================================================
@@ -9,7 +10,7 @@ let g:conda_startup_msg_suppress = 1
 " =============================================================================
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/vimfiles/bundle/Vundle.vim
 call vundle#begin()
 "--------------------- Add plugins below this line ---------------------------"
 Plugin 'Valloric/YouCompleteMe'
@@ -17,15 +18,16 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'nvie/vim-flake8'
 Plugin 'w0rp/ale'
 Plugin 'reedes/vim-pencil'
-Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'cjrh/vim-conda'
-Plugin 'Raimondi/delimitMate'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'kkoenig/wimproved.vim'
-"--------------------- Add plugins above this line ---------------------------"
+Plugin 'bkad/CamelCaseMotion'
+" Plugin 'raimondi/delimitmate'
+" Plugin 'flazz/vim-colorschemes'
+"--------------------- add plugins above this line ---------------------------"
 call vundle#end()
 filetype plugin indent on
 
@@ -34,55 +36,113 @@ filetype plugin indent on
 "                                 VISUALS
 " =============================================================================
 set encoding=utf-8
-" set term=screen-256color  " Use this in terminal or terminal emulators
-set t_Co=256
+" set term=screen-256color  " use this in terminal or terminal emulators
+set t_co=256
 set background=dark
 set noerrorbells visualbell t_vb=
 set nu
 set guifont=Droid_Sans_Mono_Dotted_for_Powe:h9:cANSI:qDRAFT
-autocmd GUIEnter * set visualbell t_vb=
+
+augroup gui_bell
+  autocmd!
+  autocmd guienter * set visualbell t_vb=
+augroup end
+
 syntax on
-let g:gruvbox_contrast_dark = 'hard'
-colo gruvbox
+set linebreak
+set shiftround
+set relativenumber
+colo solarized
+
 
 if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
+  " disable background color erase (bce) so that color schemes
+  " render properly when inside 256-color tmux and gnu screen.
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
 
 
 " =============================================================================
-"                               PEP 8 MANAGEMENT
+"                             FILETYPE AUTOGROUPS
 " =============================================================================
-augroup PEP
-    autocmd!
-    autocmd BufNewFile,BufRead *.c,*.py,*.h,*.cpp,*.hpp
-        \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab
-        \ autoindent fileformat=unix
-augroup END
+augroup pep
+  autocmd!
+  autocmd filetype python,c,cpp,vim
+    \ setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab
+    \ autoindent fileformat=unix
+augroup end
+
 
 " =============================================================================
 "                           CONVENIENCE MAPS/REMAPS
 " =============================================================================
 let g:ycm_autoclose_preview_window_after_completion=1
 set backspace=indent,eol,start
+set foldtext=getline(v:foldstart+1)
 
-"        Shortcut          Remapped command
-"        --------          ----------------
-map      <leader>g         :YcmCompleter GoToDefinitionElseDeclaration<CR>
-map      <leader>t         :NERDTree<CR>
-nnoremap <leader>1         yypVr=
-nnoremap <C-Tab>           <Esc>:tabn<CR>
-nnoremap <C-S-Tab>         <Esc>:tabp<CR>
+" GLOBAL
+" -----------------------------------------------------------------------------
+" Getting around
+nnoremap <Leader>g         :YcmCompleter GoToDefinitionElseDeclaration<cr>
+nnoremap <Leader>t         :NERDTree<CR>
+nnoremap <A-l>             <C-w>l
+nnoremap <A-h>             <C-w>h
+nnoremap <A-k>             <C-w>k
+nnoremap <A-j>             <C-w>j
+inoremap jk                <Esc>
+
+" Editing
+nnoremap <C-Up>            ddkP
+nnoremap <C-Down>          ddp
+inoremap <C-U>             <Esc>viwUea
+nnoremap <Leader>"         viw<Esc>a"<Esc>bi"<Esc>lel
+noremap  <Leader>c         :Commentary<CR>
+onoremap p                 i(
+onoremap in(               :<C-U>normal! f(vi(<CR>
+onoremap il(               :<C-U>normal! F)vi(<CR>
+
+" Camel Motion
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+
+" Markdown and RST headers
+nnoremap <Leader>1         yypVr=
+nnoremap <Leader>2         yypVr-
+nnoremap <Leader>3         yypVr+
+nnoremap <Leader>4         yypVr*
+onoremap ih                :<C-U>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<CR>
+
+" Code Folding
 nnoremap <space>           za
 vnoremap <space>           zf
-nnoremap <F2>              <Esc>:HardPencil<CR>
-nnoremap <F3>              <Esc>:NoPencil<CR>
-nnoremap <F11>             <Esc>:set lines=999<CR>:set columns=999<CR>
-nnoremap <leader><Space>   <Esc>:tabnext<CR>
-nnoremap <F5>              <Esc>:Gstatus<CR>
+
+" Pencil Mode
+nnoremap <F2>              :TogglePencil<CR>
+
+" Refresh or edit .vimrc
+nnoremap <F4>              :source $MYVIMRC<CR>
+nnoremap <S-F4>            :e $MYVIMRC<CR>
+
+" Exit or save and exit
+nnoremap <F8>              :q<CR>
+nnoremap <S-F8>            :wq<CR>
+
+" Git commands
+nnoremap <F5>              :Gstatus<CR>
+
+" Fullscreen mode for gui
+nnoremap <F11>             :set lines=999<CR>:set columns=999<CR>
+
+" Tab Movement
+nnoremap <C-Tab>           :tabn<CR>
+nnoremap <C-S-Tab>         :tabp<CR>
 nnoremap <C-F1>             1gt
 nnoremap <C-F2>             2gt
 nnoremap <C-F3>             3gt
@@ -97,15 +157,10 @@ nnoremap <C-S-F4>           8gt
 "                           AIRLINE CUSTOMIZATION
 " =============================================================================
 let g:airline_section_x = '%{PencilMode()}'
-let g:pencil#mode_indicators = {'hard': 'H', 'auto': 'A', 'soft': 'S', 'off': 'OFF'}
+let g:pencil#mode_indicators = {'hard': 'H', 'auto': 'A',
+                              \ 'soft': 'S', 'off': 'OFF'}
 let g:airline_powerline_fonts = 1
 
-
-" =============================================================================
-"                            PYTHON CODE FOLDING
-" =============================================================================
-autocmd FileType python setlocal foldenable foldmethod=manual
-set foldtext=getline(v:foldstart+1)
 
 
 " =============================================================================
@@ -184,6 +239,31 @@ if has("gui_running")
   if !exists('g:screen_size_by_vim_instance')
     let g:screen_size_by_vim_instance = 1
   endif
-  autocmd VimEnter * if g:screen_size_restore_pos == 1 | call ScreenRestore() | endif
-  autocmd VimLeavePre * if g:screen_size_restore_pos == 1 | call ScreenSave() | endif
+
+  augroup resize_
+    autocmd!
+    autocmd VimEnter * if g:screen_size_restore_pos == 1 | call ScreenRestore() | endif
+    autocmd VimLeavePre * if g:screen_size_restore_pos == 1 | call ScreenSave() | endif
+  augroup END
 endif
+
+" =============================================================================
+"                            LANGUAGE CONFIGURATION
+" =============================================================================
+"
+" Default
+" -------
+augroup pep8
+    autocmd!
+    autocmd FileType * setlocal foldenable foldmethod=manual tabstop=4
+      \ softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent
+augroup END
+
+" R, Vim
+" ------
+augroup r_lang
+    autocmd!
+    autocmd FileType r,vim setlocal foldenable foldmethod=manual
+        \ tabstop=2 softtabstop=2 shiftwidth=2 textwidth=79 expandtab
+        \ autoindent fileformat=unix
+augroup END
