@@ -80,27 +80,31 @@ augroup end
 let g:ycm_autoclose_preview_window_after_completion=1
 set backspace=indent,eol,start
 set foldtext=getline(v:foldstart+1)
+let mapleader=" "
+nnoremap <Space> <Nop>
 
 " GLOBAL
 " -----------------------------------------------------------------------------
 " Getting around
-nnoremap <Leader>g         :YcmCompleter GoToDefinitionElseDeclaration<cr>
-nnoremap <Leader>t         :NERDTree<CR>
-nnoremap <A-l>             <C-w>l
-nnoremap <A-h>             <C-w>h
-nnoremap <A-k>             <C-w>k
-nnoremap <A-j>             <C-w>j
-inoremap jk                <Esc>
+nnoremap <Leader>g            :YcmCompleter GoToDefinitionElseDeclaration<cr>
+nnoremap <Leader>t            :NERDTree<CR>
+nnoremap <A-l>                <C-w>l
+nnoremap <A-h>                <C-w>h
+nnoremap <A-k>                <C-w>k
+nnoremap <A-j>                <C-w>j
+inoremap jk                   <Esc>
+nnoremap <S-ScrollWheelUp>    <ScrollWheelLeft>
+nnoremap <S-ScrollWheelDown>  <ScrollWheelRight>
 
 " Editing
-nnoremap <C-Up>            ddkP
-nnoremap <C-Down>          ddp
-inoremap <C-U>             <Esc>viwUea
-nnoremap <Leader>"         viw<Esc>a"<Esc>bi"<Esc>lel
-noremap  <Leader>c         :Commentary<CR>
-onoremap p                 i(
-onoremap in(               :<C-U>normal! f(vi(<CR>
-onoremap il(               :<C-U>normal! F)vi(<CR>
+nnoremap <C-Up>               ddkP
+nnoremap <C-Down>             ddp
+inoremap <C-U>                <Esc>viwUea
+nnoremap <Leader>"            viw<Esc>a"<Esc>bi"<Esc>lel
+noremap  <Leader>c            :Commentary<CR>
+onoremap p                    i(
+onoremap in(                  :<C-U>normal! f(vi(<CR>
+onoremap il(                  :<C-U>normal! F)vi(<CR>
 
 " Camel Motion
 map <silent> w <Plug>CamelCaseMotion_w
@@ -113,44 +117,58 @@ sunmap e
 sunmap ge
 
 " Markdown and RST headers
-nnoremap <Leader>1         yypVr=
-nnoremap <Leader>2         yypVr-
-nnoremap <Leader>3         yypVr+
-nnoremap <Leader>4         yypVr*
-onoremap ih                :<C-U>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<CR>
+nnoremap <Leader>1            yypVr=
+nnoremap <Leader>2            yypVr-
+nnoremap <Leader>3            yypVr+
+nnoremap <Leader>4            yypVr*
+onoremap ih                   :<C-U>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<CR>
 
 " Code Folding
-nnoremap <space>           za
-vnoremap <space>           zf
+nnoremap \                    za
+vnoremap \                    zf
 
 " Pencil Mode
-nnoremap <F2>              :TogglePencil<CR>
+nnoremap <F2>                 :TogglePencil<CR>
 
 " Refresh or edit .vimrc
-nnoremap <F4>              :source $MYVIMRC<CR>
-nnoremap <S-F4>            :e $MYVIMRC<CR>
+nnoremap <F4>                 :source $MYVIMRC<CR>
+nnoremap <S-F4>               :e $MYVIMRC<CR>
+nnoremap <C-S-F4>             :vs $MYVIMRC<CR>
 
 " Exit or save and exit
-nnoremap <F8>              :q<CR>
-nnoremap <S-F8>            :wq<CR>
+nnoremap <F8>                 :q<CR>
+nnoremap <S-F8>               :wq<CR>
 
 " Git commands
-nnoremap <F5>              :Gstatus<CR>
+nnoremap <F5>                 :Gstatus<CR>
 
 " Fullscreen mode for gui
-nnoremap <F11>             :set lines=999<CR>:set columns=999<CR>
+nnoremap <F11>                :set lines=999<CR>:set columns=999<CR>
 
 " Tab Movement
-nnoremap <C-Tab>           :tabn<CR>
-nnoremap <C-S-Tab>         :tabp<CR>
-nnoremap <C-F1>             1gt
-nnoremap <C-F2>             2gt
-nnoremap <C-F3>             3gt
-nnoremap <C-F4>             4gt
-nnoremap <C-S-F1>           5gt
-nnoremap <C-S-F2>           6gt
-nnoremap <C-S-F3>           7gt
-nnoremap <C-S-F4>           8gt
+nnoremap <C-Tab>              :tabn<CR>
+nnoremap <C-S-Tab>            :tabp<CR>
+nnoremap <C-F1>                1gt
+nnoremap <C-F2>                2gt
+nnoremap <C-F3>                3gt
+nnoremap <C-F4>                4gt
+nnoremap <C-S-F1>              5gt
+nnoremap <C-S-F2>              6gt
+nnoremap <C-S-F3>              7gt
+nnoremap <C-S-F4>              8gt
+
+" Execute code
+nnoremap <Leader>rs            :!sas <C-R>%<CR>
+nnoremap <Leader>rp            :!python <C-R>%<CR>
+
+" View logs and output
+nnoremap <Leader>l             :exe "e ".expand("%:r").".log"<CR>
+nnoremap <Leader>o             :exe "e ".expand("%:r").".lst"<CR>
+nnoremap <Leader>m             :messages<CR>
+
+" SAS Commands
+nnoremap <Leader>se            :exe "call SASErrors()"<CR>
+nnoremap <Leader>sk            :exe "e ".expand("%:r").".sas"<CR>
 
 
 " =============================================================================
@@ -254,16 +272,33 @@ endif
 " Default
 " -------
 augroup pep8
-    autocmd!
-    autocmd FileType * setlocal foldenable foldmethod=manual tabstop=4
-      \ softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent
+  autocmd!
+  autocmd FileType * setlocal foldenable foldmethod=manual tabstop=4
+    \ softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent nohlsearch
 augroup END
 
 " R, Vim
 " ------
 augroup r_lang
-    autocmd!
-    autocmd FileType r,vim setlocal foldenable foldmethod=manual
-        \ tabstop=2 softtabstop=2 shiftwidth=2 textwidth=79 expandtab
-        \ autoindent fileformat=unix
+  autocmd!
+  autocmd FileType r,vim setlocal foldenable foldmethod=manual
+    \ tabstop=2 softtabstop=2 shiftwidth=2 textwidth=79 expandtab
+    \ autoindent fileformat=unix nohlsearch
+augroup END
+
+" SAS
+" ---
+function! SASErrors()
+  try
+    exe "%s/ERROR: //gn"
+    setlocal hlsearch
+  catch /.*/
+    echo "No errors."
+    setlocal nohlsearch
+  endtry
+endfunction
+
+augroup SAS
+  autocmd!
+  autocmd BufRead *.lst setlocal nowrap
 augroup END
