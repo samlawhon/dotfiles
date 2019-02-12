@@ -42,6 +42,7 @@ set background=dark
 set noerrorbells visualbell t_vb=
 set nu
 set guifont=Droid_Sans_Mono_Dotted_for_Powe:h9:cANSI:qDRAFT
+set autoread
 
 augroup gui_bell
   autocmd!
@@ -53,7 +54,6 @@ set linebreak
 set shiftround
 set relativenumber
 colo solarized
-
 
 if &term =~ '256color'
   " disable background color erase (bce) so that color schemes
@@ -105,6 +105,7 @@ noremap  <Leader>c            :Commentary<CR>
 onoremap p                    i(
 onoremap in(                  :<C-U>normal! f(vi(<CR>
 onoremap il(                  :<C-U>normal! F)vi(<CR>
+onoremap i;                   :<C-U>execute "normal! v/;\rhs"<CR>
 
 " Camel Motion
 map <silent> w <Plug>CamelCaseMotion_w
@@ -158,8 +159,8 @@ nnoremap <C-S-F3>              7gt
 nnoremap <C-S-F4>              8gt
 
 " Execute code
-nnoremap <Leader>rs            :!sas <C-R>%<CR>
-nnoremap <Leader>rp            :!python <C-R>%<CR>
+nnoremap <Leader>rs            :silent !sas <C-R>%<CR> <bar> :exe "e ".expand("%:r").".lst"<CR>
+nnoremap <Leader>rp            :silent !python <C-R>%<CR>
 
 " View logs and output
 nnoremap <Leader>l             :exe "e ".expand("%:r").".log"<CR>
