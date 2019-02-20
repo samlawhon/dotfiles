@@ -43,6 +43,7 @@ set noerrorbells visualbell t_vb=
 set nu
 set guifont=Droid_Sans_Mono_Dotted_for_Powe:h9:cANSI:qDRAFT
 set autoread
+set cursorline
 
 augroup gui_bell
   autocmd!
@@ -128,20 +129,17 @@ onoremap ih                   :<C-U>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_
 nnoremap \                    za
 vnoremap \                    zf
 
-" Pencil Mode
-nnoremap <F2>                 :TogglePencil<CR>
-
 " Refresh or edit .vimrc
-nnoremap <F4>                 :source $MYVIMRC<CR>
-nnoremap <S-F4>               :e $MYVIMRC<CR>
-nnoremap <C-S-F4>             :vs $MYVIMRC<CR>
+nnoremap <F12>                :e $MYVIMRC<CR>
+nnoremap <S-F12>              :source MYVIMRC<CR>
+nnoremap <C-S-F12>            :vs $MYVIMRC<CR>
 
 " Exit or save and exit
 nnoremap <F8>                 :q<CR>
 nnoremap <S-F8>               :wq<CR>
 
 " Git commands
-nnoremap <F5>                 :Gstatus<CR>
+nnoremap <F5>                 :Gstatus<CR><C-w><S-l> <bar> :exe "vertical res 40"<CR>
 
 " Fullscreen mode for gui
 nnoremap <F11>                :set lines=999<CR>:set columns=999<CR>
@@ -149,14 +147,14 @@ nnoremap <F11>                :set lines=999<CR>:set columns=999<CR>
 " Tab Movement
 nnoremap <C-Tab>              :tabn<CR>
 nnoremap <C-S-Tab>            :tabp<CR>
-nnoremap <C-F1>                1gt
-nnoremap <C-F2>                2gt
-nnoremap <C-F3>                3gt
-nnoremap <C-F4>                4gt
-nnoremap <C-S-F1>              5gt
-nnoremap <C-S-F2>              6gt
-nnoremap <C-S-F3>              7gt
-nnoremap <C-S-F4>              8gt
+nnoremap <F1>                1gt
+nnoremap <F2>                2gt
+nnoremap <F3>                3gt
+nnoremap <F4>                4gt
+nnoremap <S-F1>              5gt
+nnoremap <S-F2>              6gt
+nnoremap <S-F3>              7gt
+nnoremap <S-F4>              8gt
 
 " Execute code
 nnoremap <Leader>rs            :silent !sas <C-R>%<CR> <bar> :exe "e ".expand("%:r").".lst"<CR>
@@ -278,12 +276,21 @@ augroup pep8
     \ softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent nohlsearch
 augroup END
 
-" R, Vim
-" ------
+" R
+" -
 augroup r_lang
   autocmd!
   autocmd FileType r,vim setlocal foldenable foldmethod=manual
     \ tabstop=2 softtabstop=2 shiftwidth=2 textwidth=79 expandtab
+    \ autoindent fileformat=unix nohlsearch
+augroup END
+
+" Vim
+" ---
+augroup vim_lang
+  autocmd!
+  autocmd FileType vim setlocal foldenable foldmethod=manual
+    \ tabstop=2 softtabstop=2 shiftwidth=2 expandtab
     \ autoindent fileformat=unix nohlsearch
 augroup END
 
