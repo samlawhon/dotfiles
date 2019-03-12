@@ -27,3 +27,6 @@ Before you can use this vimrc, make sure to install:
      Python 3.x, scan the output of ":version" for which version it's looking for.
      For example, if you see something like "python36.dll" in there, then you need
      Python 3.6)
+     
+5. [CMake](https://cmake.org/download/) to compile
+   [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
