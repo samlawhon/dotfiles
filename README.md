@@ -10,7 +10,7 @@ Before you can use this vimrc, make sure to install:
 
 1. [Vundle](https://github.com/VundleVim/Vundle.vim) to
    `~/.vim/bundle/Vundle.vim` so that Plugins can be installed correctly.
-2. [gruvbox](https://github.com/morhets/gruvbox) colorscheme to
+2. [solarized](https://github.com/altercation/vim-colors-solarized) colorscheme to
    `~/.vim/colors/gruvbox`. (Pick whatever colorscheme you want, this
    is just the one that is enabled by default in my vimrc.)
 3. [Powerline fonts](https://github.com/powerline/fonts). For use with
