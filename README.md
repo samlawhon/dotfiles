@@ -1,7 +1,6 @@
 # vimconfig
 
-Storage for .vimrc, and some notes on troubles encountered with
-configuring vim to work with Aanaconda and Python.
+Storage for .vimrc and other dotfiles.
 
 
 ## Prerequisites
