@@ -10,7 +10,7 @@ let $PYTHONPATH = $ProgramFiles."\\Python"
 " =============================================================================
 set nocompatible
 filetype off
-set rtp+=~/vimfiles/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "--------------------- Add plugins below this line ---------------------------"
 Plugin 'Valloric/YouCompleteMe'
@@ -23,7 +23,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'cjrh/vim-conda'
+" Plugin 'cjrh/vim-conda'
 Plugin 'bkad/CamelCaseMotion'
 " Plugin 'raimondi/delimitmate'
 " Plugin 'flazz/vim-colorschemes'
@@ -100,12 +100,14 @@ nnoremap <S-ScrollWheelDown>  <ScrollWheelRight>
 " Editing
 nnoremap <C-Up>               ddkP
 nnoremap <C-Down>             ddp
-inoremap <C-U>                <Esc>viwUea
+inoremap <C-J>                <Esc>viwUea
 nnoremap <Leader>"            viw<Esc>a"<Esc>bi"<Esc>lel
 noremap  <Leader>c            :Commentary<CR>
 onoremap p                    i(
 onoremap in(                  :<C-U>normal! f(vi(<CR>
+onoremap in[                  :<C-U>normal! f[vi[<CR>
 onoremap il(                  :<C-U>normal! F)vi(<CR>
+onoremap il[                  :<C-U>normal! F]vi[<CR>
 onoremap i;                   :<C-U>execute "normal! v/;\rhs"<CR>
 
 " Camel Motion
@@ -130,7 +132,7 @@ nnoremap \                    za
 vnoremap \                    zf
 
 " Refresh or edit .vimrc
-nnoremap <F12>                :e $MYVIMRC<CR>
+nnoremap <F12>                :tabe $MYVIMRC<CR>
 nnoremap <S-F12>              :source MYVIMRC<CR>
 nnoremap <C-S-F12>            :vs $MYVIMRC<CR>
 
@@ -139,7 +141,7 @@ nnoremap <F8>                 :q<CR>
 nnoremap <S-F8>               :wq<CR>
 
 " Git commands
-nnoremap <F5>                 :Gstatus<CR><C-w><S-l> <bar> :exe "vertical res 40"<CR>
+nnoremap <F5>                 :Gstatus<CR><C-w><S-l> <bar> :exe "vertical res 50"<CR>
 
 " Fullscreen mode for gui
 nnoremap <F11>                :set lines=999<CR>:set columns=999<CR>
