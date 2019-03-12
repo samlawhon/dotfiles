@@ -22,8 +22,8 @@ Before you can use this vimrc, make sure to install:
    [YouCompleteMe](https://github.com/Valloric/YouCompleteMe). Make sure to grab the
    correct version - use ":version" to check:
    
-       a. 32 or 64 bit
-       b. Python version (2.7 should always work and is recommended. If you want to use
-          Python 3.x, scan the output of ":version" for which version it's looking for.
-          For example, if you see something like "python36.dll" in there, then you need
-          Python 3.6)
+   * 32 or 64 bit
+   * Python version (2.7 should always work and is recommended. If you want to use
+     Python 3.x, scan the output of ":version" for which version it's looking for.
+     For example, if you see something like "python36.dll" in there, then you need
+     Python 3.6)
