@@ -2,7 +2,7 @@
 "                           EARLY STACK VARIABLES
 " =============================================================================
 let g:conda_startup_msg_suppress = 1
-let $PYTHONPATH = $ProgramFiles."\\Python"
+" let $PYTHONPATH = "C:\\Python27"
 
 
 " =============================================================================
@@ -23,10 +23,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'cjrh/vim-conda'
+Plugin 'cjrh/vim-conda'
 Plugin 'bkad/CamelCaseMotion'
-" Plugin 'raimondi/delimitmate'
-" Plugin 'flazz/vim-colorschemes'
+Plugin 'morhetz/gruvbox'
 "--------------------- add plugins above this line ---------------------------"
 call vundle#end()
 filetype plugin indent on
@@ -54,7 +53,7 @@ syntax on
 set linebreak
 set shiftround
 set relativenumber
-colo solarized
+colo gruvbox
 
 if &term =~ '256color'
   " disable background color erase (bce) so that color schemes
