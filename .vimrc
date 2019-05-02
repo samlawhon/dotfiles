@@ -95,6 +95,8 @@ nnoremap <A-j>                <C-w>j
 inoremap jk                   <Esc>
 nnoremap <S-ScrollWheelUp>    <ScrollWheelLeft>
 nnoremap <S-ScrollWheelDown>  <ScrollWheelRight>
+nnoremap <A-Down>       :<C-U>execute "normal! /def \|class "<CR>nzz
+nnoremap <A-Up>         :<C-U>execute "normal! ?def \|class "<CR><S-N>zz
 
 " Editing
 nnoremap <C-Up>               ddkP
@@ -132,7 +134,7 @@ vnoremap \                    zf
 
 " Refresh or edit .vimrc
 nnoremap <F12>                :tabe $MYVIMRC<CR>
-nnoremap <S-F12>              :source MYVIMRC<CR>
+nnoremap <S-F12>              :source $MYVIMRC<CR>
 nnoremap <C-S-F12>            :vs $MYVIMRC<CR>
 
 " Exit or save and exit
