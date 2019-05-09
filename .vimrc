@@ -77,6 +77,8 @@ augroup end
 " =============================================================================
 "                           CONVENIENCE MAPS/REMAPS
 " =============================================================================
+nnoremap <C-E> 2<C-E>
+nnoremap <C-Y> 2<C-Y>
 let g:ycm_autoclose_preview_window_after_completion=1
 set backspace=indent,eol,start
 set foldtext=getline(v:foldstart+1)
@@ -95,10 +97,11 @@ nnoremap <A-j>                <C-w>j
 inoremap jk                   <Esc>
 nnoremap <S-ScrollWheelUp>    <ScrollWheelLeft>
 nnoremap <S-ScrollWheelDown>  <ScrollWheelRight>
-nnoremap <A-Down>       :<C-U>execute "normal! /def \|class "<CR>nzz
-nnoremap <A-Up>         :<C-U>execute "normal! ?def \|class "<CR><S-N>zz
+map <S-Down>                  ]mzz
+map <S-Up>                    [mzz
 
 " Editing
+" TODO can we do this C-movement in visual mode for multiple lines?
 nnoremap <C-Up>               ddkP
 nnoremap <C-Down>             ddp
 inoremap <C-J>                <Esc>viwUea
@@ -134,6 +137,7 @@ vnoremap \                    zf
 
 " Refresh or edit .vimrc
 nnoremap <F12>                :tabe $MYVIMRC<CR>
+nnoremap <C-F12>              :e $MYVIMRC<CR>
 nnoremap <S-F12>              :source $MYVIMRC<CR>
 nnoremap <C-S-F12>            :vs $MYVIMRC<CR>
 
@@ -150,14 +154,14 @@ nnoremap <F11>                :set lines=999<CR>:set columns=999<CR>
 " Tab Movement
 nnoremap <C-Tab>              :tabn<CR>
 nnoremap <C-S-Tab>            :tabp<CR>
-nnoremap <F1>                1gt
-nnoremap <F2>                2gt
-nnoremap <F3>                3gt
-nnoremap <F4>                4gt
-nnoremap <S-F1>              5gt
-nnoremap <S-F2>              6gt
-nnoremap <S-F3>              7gt
-nnoremap <S-F4>              8gt
+nnoremap <F1>                 1gt
+nnoremap <F2>                 2gt
+nnoremap <F3>                 3gt
+nnoremap <F4>                 4gt
+nnoremap <S-F1>               5gt
+nnoremap <S-F2>               6gt
+nnoremap <S-F3>               7gt
+nnoremap <S-F4>               8gt
 
 " Execute code
 nnoremap <Leader>rs            :silent !sas <C-R>%<CR> <bar> :exe "e ".expand("%:r").".lst"<CR>
@@ -171,7 +175,6 @@ nnoremap <Leader>m             :messages<CR>
 " SAS Commands
 nnoremap <Leader>se            :exe "call SASErrors()"<CR>
 nnoremap <Leader>sk            :exe "e ".expand("%:r").".sas"<CR>
-
 
 " =============================================================================
 "                           AIRLINE CUSTOMIZATION
