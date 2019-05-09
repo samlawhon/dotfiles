@@ -2,7 +2,7 @@
 "                           EARLY STACK VARIABLES
 " =============================================================================
 let g:conda_startup_msg_suppress = 1
-" let $PYTHONPATH = "C:\\Python27"
+" let $PYTHONPATH = $PROGRAMFILES."\\Python"
 
 
 " =============================================================================
