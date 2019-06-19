@@ -1,3 +1,4 @@
+;; ======================
 ;; Package initialization
 ;; ======================
 (require 'package)
@@ -18,6 +19,17 @@ There are two things you can do about this warning:
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar myPackages
+  '(color-theme-sanityinc-tomorrow
+    magit))
+
+(mapc #'(lambda (package)
+	  (unless (package-installed-p package)
+	    (package-install package)))
+      myPackages)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
