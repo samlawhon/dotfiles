@@ -92,4 +92,4 @@ There are two things you can do about this warning:
 ;; =======
 (global-display-line-numbers-mode)
 (require 'color-theme-sanityinc-tomorrow)
-(color-theme-sanityinc-tomorrow-blue)
+(color-theme-sanityinc-tomorrow-eighties)
