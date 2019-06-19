@@ -1,6 +1,7 @@
-;; ======================
+;; ============================================================================
 ;; Package initialization
-;; ======================
+;; ============================================================================
+
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -44,12 +45,7 @@ There are two things you can do about this warning:
  '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
  '(custom-safe-themes
    (quote
-    ("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d"
-     "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e"
-     "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a"
-     "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58"
-     "82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016"
-     default)))
+    ("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" default)))
  '(fci-rule-color "#424242")
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
  '(frame-background-mode (quote dark))
@@ -87,9 +83,34 @@ There are two things you can do about this warning:
  )
 
 
-;; =======
+;; ============================================================================
 ;; Visuals
-;; =======
+;; ============================================================================
+
 (global-display-line-numbers-mode)
 (require 'color-theme-sanityinc-tomorrow)
-(color-theme-sanityinc-tomorrow-eighties)
+(color-theme-sanityinc-tomorrow-blue)
+(scroll-bar-mode -1)
+(tool-bar-mode   -1)
+(tooltip-mode    -1)
+(menu-bar-mode   -1)
+(toggle-frame-fullscreen)
+(setq column-number-mode t)
+(add-to-list 'default-frame-alist
+	     '(font . "Droid Sans Mono Slashed for Powerline-10"))
+
+
+;; ============================================================================
+;; Preferences
+;; ============================================================================
+
+;; Stop stupid bell
+(setq ring-bell-function 'ignore)
+
+;; Don't clutter up directories with files~
+(setq backup-directory-alist
+      `(("." . ,"~/.emacs.d/backups")))
+
+;; Don't clutter with #files either
+(setq auto-save-file-name-transforms
+      `((".*" ,"~/.emacs.d/backups")))
