@@ -1,8 +1,6 @@
 " =============================================================================
 "                           EARLY STACK VARIABLES
 " =============================================================================
-let g:conda_startup_msg_suppress = 1
-" let $PYTHONPATH = $PROGRAMFILES."\\Python"
 
 
 " =============================================================================
@@ -11,8 +9,12 @@ let g:conda_startup_msg_suppress = 1
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/colors
 call vundle#begin()
 "--------------------- Add plugins below this line ---------------------------"
+Plugin 'cocopon/iceberg.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'altercation/solarized'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'nvie/vim-flake8'
@@ -23,9 +25,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'cjrh/vim-conda'
 Plugin 'bkad/CamelCaseMotion'
-Plugin 'morhetz/gruvbox'
+Plugin 'PProvost/vim-ps1'
+Plugin 'dhruvasagar/vim-table-mode'
 "--------------------- add plugins above this line ---------------------------"
 call vundle#end()
 filetype plugin indent on
@@ -53,7 +55,10 @@ syntax on
 set linebreak
 set shiftround
 set relativenumber
-colo gruvbox
+
+if has("gui_running")
+  colo iceberg
+endif
 
 if &term =~ '256color'
   " disable background color erase (bce) so that color schemes
@@ -89,7 +94,10 @@ nnoremap <Space> <Nop>
 " -----------------------------------------------------------------------------
 " Getting around
 nnoremap <Leader>g            :YcmCompleter GoToDefinitionElseDeclaration<cr>
-nnoremap <Leader>t            :NERDTree<CR>
+nnoremap <F9>                 :NERDTree<CR>
+nnoremap <F10>                :NERDTreeFromBookmark<Space>
+nnoremap <Leader>j            /# --------------------<CR>zt
+nnoremap <Leader>k            ?# --------------------<CR>zt
 nnoremap <A-l>                <C-w>l
 nnoremap <A-h>                <C-w>h
 nnoremap <A-k>                <C-w>k
@@ -149,7 +157,8 @@ nnoremap <S-F8>               :wq<CR>
 nnoremap <F5>                 :Gstatus<CR><C-w><S-l> <bar> :exe "vertical res 50"<CR>
 
 " Fullscreen mode for gui
-nnoremap <F11>                :set lines=999<CR>:set columns=999<CR>
+" nnoremap <F11>                :set lines=999<CR>:set columns=999<CR>
+nnoremap <F11>                <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
 " Tab Movement
 nnoremap <C-Tab>              :tabn<CR>
@@ -168,13 +177,15 @@ nnoremap <Leader>rs            :silent !sas <C-R>%<CR> <bar> :exe "e ".expand("%
 nnoremap <Leader>rp            :silent !python <C-R>%<CR>
 
 " View logs and output
-nnoremap <Leader>l             :exe "e ".expand("%:r").".log"<CR>
+" TODO this conflicts with table-mode, so we need to find a better map
+" nnoremap <Leader>l             :exe "e ".expand("%:r").".log"<CR>
 nnoremap <Leader>o             :exe "e ".expand("%:r").".lst"<CR>
 nnoremap <Leader>m             :messages<CR>
 
 " SAS Commands
 nnoremap <Leader>se            :exe "call SASErrors()"<CR>
 nnoremap <Leader>sk            :exe "e ".expand("%:r").".sas"<CR>
+
 
 " =============================================================================
 "                           AIRLINE CUSTOMIZATION
@@ -278,6 +289,7 @@ endif
 " -------
 augroup pep8
   autocmd!
+  autocmd BufWritePre * %s/\s\+$//e
   autocmd FileType * setlocal foldenable foldmethod=manual tabstop=4
     \ softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent nohlsearch
 augroup END
