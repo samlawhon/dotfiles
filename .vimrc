@@ -31,6 +31,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 "--------------------- add plugins above this line ---------------------------"
 call vundle#end()
 filetype plugin indent on
+" END PLUGINS
 
 
 " =============================================================================

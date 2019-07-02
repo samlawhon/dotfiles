@@ -1,4 +1,6 @@
 @echo off
+:: General TODOs:
+::   - Python version checking and compilation
 
 :: ===========================================================================
 :: Setup // variables
@@ -33,11 +35,22 @@ git clone %mygit% %mygitout%
 cp .vimrc %USERPROFILE%
 cp .pylintrc %USERPROFILE%
 
+
 :: Install plugins
+:: ---------------
+
+:: Vundle
 mkdir .vim
 mkdir .vim\\bundle
 git clone %vundleurl% %USERPROFILE%\\.vim\\bundle\\Vundle.vim
-gvim -u %mygitout%\\pluginrc.vim -s %mygitout%\\doplugins.txt
+
+:: Plugin .vimrc proxy
+cd %mygitout%
+python copy_plugins.py
+cd %USERPROFILE%
+gvim -u %mygitout%\\.pluginrc -s %mygitout%\\doplugins.txt
+
+:: Gvim fullscreen
 :: TODO download and install gvimfullscreen.dll
 
 :: Compile YouCompleteMe
