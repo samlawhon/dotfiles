@@ -116,6 +116,7 @@ nnoremap <C-Down>             ddp
 inoremap <C-J>                <Esc>viwUea
 nnoremap <Leader>"            viw<Esc>a"<Esc>bi"<Esc>lel
 noremap  <Leader>c            :Commentary<CR>
+nnoremap <Leader>p            :TogglePencil
 onoremap p                    i(
 onoremap in(                  :<C-U>normal! f(vi(<CR>
 onoremap in[                  :<C-U>normal! f[vi[<CR>
