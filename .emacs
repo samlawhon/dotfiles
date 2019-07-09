@@ -27,7 +27,8 @@ There are two things you can do about this warning:
   '(color-theme-sanityinc-tomorrow
     magit
     flx-ido
-    projectile))
+    projectile
+    linum-relative))
 
 (mapc #'(lambda (package)
 	  (unless (package-installed-p package)
@@ -96,11 +97,12 @@ There are two things you can do about this warning:
 (tool-bar-mode   -1)
 (tooltip-mode    -1)
 (menu-bar-mode   -1)
-(toggle-frame-fullscreen)
+; (toggle-frame-fullscreen)
 (setq column-number-mode t)
 (add-to-list 'default-frame-alist
 	     '(font . "Droid Sans Mono Slashed for Powerline-10"))
-(display-time-mode -1)
+(display-time-mode)
+(require 'linum-relative)
 
 
 ;; ============================================================================
@@ -133,3 +135,25 @@ There are two things you can do about this warning:
 ;; ============================================================================
 
 (global-set-key [f5] (quote magit-status))
+
+
+;; ============================================================================
+;; Key-chord
+;; ============================================================================
+(add-to-list 'load-path "~/.emacs.d/packages/key-chord")
+(require 'key-chord)
+(setq key-chord-two-keys-delay 0.5)
+(key-chord-mode 1)
+
+
+;; ============================================================================
+;; Evil
+;; ============================================================================
+
+;; Load evil
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+;(evil-mode 1)
+
+;; Keybindings
+(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
