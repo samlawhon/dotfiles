@@ -1,5 +1,5 @@
 ;; ============================================================================
-;; Package initialization
+;; package initialization
 ;; ============================================================================
 
 (require 'package)
@@ -28,7 +28,8 @@ There are two things you can do about this warning:
     magit
     flx-ido
     projectile
-    linum-relative))
+    linum-relative
+    markdown-mode))
 
 (mapc #'(lambda (package)
 	  (unless (package-installed-p package)
@@ -140,7 +141,7 @@ There are two things you can do about this warning:
 ;; ============================================================================
 ;; Key-chord
 ;; ============================================================================
-(add-to-list 'load-path "~/.emacs.d/packages/key-chord")
+(add-to-list 'load-path "~/.emacs.d/key-chord")
 (require 'key-chord)
 (setq key-chord-two-keys-delay 0.5)
 (key-chord-mode 1)
@@ -151,9 +152,15 @@ There are two things you can do about this warning:
 ;; ============================================================================
 
 ;; Load evil
-(add-to-list 'load-path "~/.emacs.d/evil")
-(require 'evil)
-;(evil-mode 1)
+;; (add-to-list 'load-path "~/.emacs.d/evil")
+;; (require 'evil)
+;; (evil-mode 1)
 
 ;; Keybindings
-(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+
+
+;; ============================================================================
+;; Keyboard shortcuts
+;; ============================================================================
+(global-set-key [f11] 'toggle-frame-fullscreen)
