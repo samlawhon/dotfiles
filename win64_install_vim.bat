@@ -6,15 +6,18 @@
 :: Setup // variables
 :: ===========================================================================
 
-:: vim install variables
+:: remotes
 set vimurl="https://github.com/vim/vim"
-set pyinstall=%USERPROFILE%\\miniconda3
+set mygit="https://github.com/renzmann/dotfiles"
+set vundleurl="https://github.com/VundleVim/Vundle.vim"
+set fullscreenurl="https://github.com/derekmcloughlin/gvimfullscreen_win32"
+
+:: vim install variables
+set pyinstall=%USERPROFILE%\\Anaconda3
 set pyver=37
 
 :: dotfile variables
-set mygit="https://github.com/renzmann/dotfiles"
 set mygitout=%USERPROFILE%\\dotfiles
-set vundleurl="https://github.com/VundleVim/Vundle.vim"
 
 
 :: ===========================================================================
@@ -31,9 +34,8 @@ nmake -f Make_mvc.mak GUI=yes PYTHON3=%pyinstall% DYNAMIC_PYTHON=yes PYTHON3_VER
 
 :: copy dotfiles/configuration
 cd %USERPROFILE%
-git clone %mygit% %mygitout%
-cp .vimrc %USERPROFILE%
-cp .pylintrc %USERPROFILE%
+cp %mygit%\.vimrc %USERPROFILE%
+cp %mygit%\.pylintrc %USERPROFILE%
 
 
 :: Install plugins
@@ -51,7 +53,8 @@ cd %USERPROFILE%
 gvim -u %mygitout%\\.pluginrc -s %mygitout%\\doplugins.txt
 
 :: Gvim fullscreen
-:: TODO download and install gvimfullscreen.dll
+git clone fullscreenurl
+cp gvimfullscreen_32\gvimfullscreen_64.dll vim\src
 
 :: Compile YouCompleteMe
 cd %USERPROFILE%\\.vim\\bundle\\YouCompleteMe
