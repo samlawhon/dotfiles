@@ -1,0 +1,1 @@
+("~/repos/fyda/" "~/repos/dotfiles/")

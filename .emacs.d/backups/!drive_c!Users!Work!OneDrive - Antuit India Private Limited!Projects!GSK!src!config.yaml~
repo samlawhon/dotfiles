@@ -1,0 +1,8 @@
+version: 2
+url: https://antuit.atlassian.org
+base_dir: docs/build/html
+images_dir: pic
+pages:
+- id: 22183948
+  source: design
+  source_ext: .html

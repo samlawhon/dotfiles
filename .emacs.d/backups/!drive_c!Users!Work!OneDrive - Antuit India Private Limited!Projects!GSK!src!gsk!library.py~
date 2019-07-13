@@ -1,0 +1,10 @@
+"""Library of functions."""
+
+def test_function(some_string):
+    """
+    This is a simple test function that UPPER's your string.
+    
+    Parameters
+    ----------
+    some_string : str
+        The string you want to UPPER
