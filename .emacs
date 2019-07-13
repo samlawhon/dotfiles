@@ -29,7 +29,7 @@ There are two things you can do about this warning:
     flx-ido
     projectile
     linum-relative
-    markdown-mode))
+    org))
 
 (mapc #'(lambda (package)
 	  (unless (package-installed-p package)
@@ -92,8 +92,8 @@ There are two things you can do about this warning:
 ;; ============================================================================
 
 (global-display-line-numbers-mode)
-(require 'color-theme-sanityinc-tomorrow)
-(color-theme-sanityinc-tomorrow-blue)
+(add-to-list 'load-path "~/.emacs.d/iceberg-emacs")
+(require 'iceberg-theme)
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
 (tooltip-mode    -1)
@@ -141,9 +141,9 @@ There are two things you can do about this warning:
 ;; ============================================================================
 ;; Key-chord
 ;; ============================================================================
-(add-to-list 'load-path "~/.emacs.d/key-chord")
+(add-to-list 'load-path "~/.emacs.d/packages/key-chord")
 (require 'key-chord)
-(setq key-chord-two-keys-delay 0.5)
+(setq key-chord-two-keys-delay 0.05)
 (key-chord-mode 1)
 
 
@@ -152,15 +152,22 @@ There are two things you can do about this warning:
 ;; ============================================================================
 
 ;; Load evil
-;; (add-to-list 'load-path "~/.emacs.d/evil")
-;; (require 'evil)
-;; (evil-mode 1)
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+;(evil-mode 1)
 
 ;; Keybindings
-;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+;; (key-chord-define-global "df" 'turn-on-evil-mode)
+(key-chord-define-global "90" 'turn-off-evil-mode)
+(key-chord-define-global "jk" 'evil-normal-state)
 
 
 ;; ============================================================================
-;; Keyboard shortcuts
+;; Org-mode
 ;; ============================================================================
-(global-set-key [f11] 'toggle-frame-fullscreen)
+
+;; Global bindings
+(key-chord-define-global "12" 'org-store-link)
+(key-chord-define-global "13" 'org-agenda)
+(key-chord-define-global "14" 'org-capture)
+(key-chord-define-global "15" 'org-switchb)
