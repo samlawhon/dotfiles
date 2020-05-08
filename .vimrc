@@ -305,11 +305,18 @@ augroup r_lang
     \ autoindent fileformat=unix nohlsearch
 augroup END
 
-" Vim
-" ---
+" Vim / YAML
+" ----------
 augroup vim_lang
   autocmd!
   autocmd FileType vim setlocal foldenable foldmethod=manual
+    \ tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+    \ autoindent fileformat=unix nohlsearch
+augroup END
+augroup yaml
+  autocmd!
+  autocmd BufRead BufNewFile *.yml setlocal filetype=yaml
+  autocmd FileType yaml setlocal foldenable foldmethod=manual
     \ tabstop=2 softtabstop=2 shiftwidth=2 expandtab
     \ autoindent fileformat=unix nohlsearch
 augroup END
