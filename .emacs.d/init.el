@@ -75,7 +75,7 @@ There are two things you can do about this warning:
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (## groovy-mode gradle-mode memoize jdee magit color-theme-sanityinc-tomorrow solarized-theme)))
+    (lsp-mode ## groovy-mode gradle-mode memoize jdee magit color-theme-sanityinc-tomorrow solarized-theme)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -130,6 +130,8 @@ There are two things you can do about this warning:
 (add-hook 'java-mode-hook #'lsp)
 (set-default 'truncate-lines t)
 (setq truncate-partial-width-windows nil)
+(require 'yasnippet)
+(yas-global-mode 1)
 
 
 ;; ============================================================================
@@ -155,6 +157,8 @@ There are two things you can do about this warning:
 
 ;; Enable use-package
 (require 'use-package)
+
+
 
 
 ;; ============================================================================
@@ -208,7 +212,7 @@ There are two things you can do about this warning:
    (substitute-key-definition
     'minibuffer-complete-word
     'self-insert-command
-    minibuffer-local-completion- map)
+    minibuffer-local-completion-map)
    ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
   (setq sbt:program-options '("-Dsbt.supershell=false"))
   )
@@ -220,7 +224,7 @@ There are two things you can do about this warning:
 	     ;; enable lsp-mode automatically in scala files
 	     :hook (scala-mode . lsp)
 	           (lsp-mode . lsp-lens-mode)
-		   :config (setq lsp-prefer-flymake nil))
+		   :config (setq lsp-diagnostic-package nil))
 
 ;; Enable nice rencering of documentation on hover
 (use-package lsp-ui)
@@ -241,7 +245,7 @@ There are two things you can do about this warning:
 
 ;; Use the Tree View Protocol for viewing the project structure and triggering compilation
 (use-package lsp-treemacs :config (lsp-metals-treeview-enable t)
-  (setq lsp-metals-treeview-show-when-views-receiced t)
+  (setq lsp-metals-treeview-show-when-views-received t))
 
 
 ;; ============================================================================
@@ -258,6 +262,7 @@ There are two things you can do about this warning:
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(setq projectile-globally-ignored-directories `(".bloop", ".metals"))
 
 
 ;; ============================================================================
@@ -272,7 +277,7 @@ There are two things you can do about this warning:
 ;; ============================================================================
 (add-to-list 'load-path "~/.emacs.d/key-chord")
 (require 'key-chord)
-(setq key-chord-two-keys-delay 0.01)
+(setq key-chord-two-keys-delay 0.05)
 (key-chord-mode 1)
 
 
