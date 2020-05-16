@@ -40,7 +40,7 @@ set t_co=256
 set background=dark
 set noerrorbells visualbell t_vb=
 set nu
-set guifont=Droid_Sans_Mono_Dotted_for_Powe:h9:cANSI:qDRAFT
+set guifont=DejaVu_Sans_Mono_for_Powerline:h11:cANSI:qDRAFT
 set autoread
 set cursorline
 
@@ -298,9 +298,10 @@ endif
 augroup pep8
   autocmd!
   autocmd BufWritePre * %s/\s\+$//e
-  autocmd FileType python setlocal foldenable foldmethod=manual tabstop=4
+  autocmd FileType python,java setlocal foldenable foldmethod=manual tabstop=4
     \ softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent nohlsearch
 augroup END
+
 
 " R
 " -
