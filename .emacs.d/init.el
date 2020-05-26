@@ -1,3 +1,10 @@
+;;; Emacs initialization file
+
+;;; Commentary
+;; TODO -- for language-specific configs, switch to a load-on-demand style to
+;;         help boot up time
+
+
 ;; ============================================================================
 ;; package initialization
 ;; ============================================================================
@@ -48,7 +55,8 @@ There are two things you can do about this warning:
     py-autopep8
     sbt-mode
     scala-mode
-    use-package))
+    use-package
+    ess))
 
 (mapc #'(lambda (package)
 	  (unless (package-installed-p package)
@@ -75,7 +83,7 @@ There are two things you can do about this warning:
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (lsp-mode ## groovy-mode gradle-mode memoize jdee magit color-theme-sanityinc-tomorrow solarized-theme)))
+    (ess lsp-mode ## groovy-mode gradle-mode memoize jdee magit color-theme-sanityinc-tomorrow solarized-theme)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -173,11 +181,13 @@ There are two things you can do about this warning:
 (pyvenv-workon 'gsk)
 
 ;; Use IPython for REPL
-;; (setq python-shell-interpreter "jupyter"
-;;       python-shell-interpreter-args "console --simple-prompt"
-;;       python-shell-prompt-detect-failure-warning nil)
-;; (add-to-list 'python-shell-completion-native-disabled-interpreters
-;; 	     "jupyter")
+;; (when (executable-find "ipython")
+;;   (setq python-shell-interpreter "ipython"))
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+	     "jupyter")
 
 ;; Enable flycheck
 (when (require 'flycheck nil t)
@@ -254,6 +264,8 @@ There are two things you can do about this warning:
 
 (require 'julia-repl)
 (add-hook 'julia-mode-hook 'julia-repl-mode)  
+(require 'ess-site)
+;; TODO automatically add ``end'' to keywords that use it
 
 ;; ============================================================================
 ;; Projectile
