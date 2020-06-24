@@ -26,6 +26,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'PProvost/vim-ps1'
 Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'JuliaEditorSupport/julia-vim'
 "--------------------- add plugins above this line ---------------------------"
 call vundle#end()
 filetype plugin indent on
@@ -182,6 +183,7 @@ nnoremap <S-F4>               8gt
 " Execute code
 nnoremap <Leader>rs            :silent !sas <C-R>%<CR> <bar> :exe "e ".expand("%:r").".lst"<CR>
 nnoremap <Leader>rp            :silent !python <C-R>%<CR>
+nnoremap <Leader>rj            :silent !julia <C-R>%<CR>
 
 " View logs and output
 " TODO this conflicts with table-mode, so we need to find a better map
@@ -297,28 +299,20 @@ endif
 augroup pep8
   autocmd!
   autocmd BufWritePre * %s/\s\+$//e
-  autocmd FileType python,java setlocal foldenable foldmethod=manual tabstop=4
+  autocmd FileType python,java,julia setlocal foldenable foldmethod=manual tabstop=4
     \ softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent nohlsearch
 augroup END
 
 
-" R
-" -
+" Two-space langs
+" ---------------
 augroup r_lang
   autocmd!
-  autocmd FileType r,vim setlocal foldenable foldmethod=manual
+  autocmd FileType r,vim,scala setlocal foldenable foldmethod=manual
     \ tabstop=2 softtabstop=2 shiftwidth=2 textwidth=79 expandtab
     \ autoindent fileformat=unix nohlsearch
 augroup END
 
-" Vim
-" ---
-augroup vim_lang
-  autocmd!
-  autocmd FileType vim setlocal foldenable foldmethod=manual
-    \ tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-    \ autoindent fileformat=unix nohlsearch
-augroup END
 
 " SAS
 " ---
