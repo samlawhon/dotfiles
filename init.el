@@ -21,6 +21,11 @@
 
 (require 'use-package)
 
+;; TODO - use this?
+;; leaf is for more advanced control compared to use-package
+;; (use-package leaf :ensure leaf)
+
+
 ;; =======================================================================
 ;; Basic preferences
 ;; =======================================================================
@@ -54,7 +59,7 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (misterioso)))
- '(package-selected-packages (quote (markdown-mode simpleclip julia-mode))))
+ '(package-selected-packages (quote (evil magit markdown-mode simpleclip julia-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -77,6 +82,13 @@
 ;; Support for markdown, require when needed
 (use-package markdown-mode :ensure markdown-mode)
 
+;; Version control (magit)
+(use-package magit :ensure magit)
+
+;; evil - vim keybindings
+(use-package evil :ensure evil)
+
+;; TODO - key-chord
 
 ;; =======================================================================
 ;; Julia
