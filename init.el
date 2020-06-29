@@ -59,7 +59,9 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (misterioso)))
- '(package-selected-packages (quote (evil magit markdown-mode simpleclip julia-mode))))
+ '(package-selected-packages
+   (quote
+    (flycheck-julia julia-repl evil magit markdown-mode simpleclip julia-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -87,6 +89,7 @@
 
 ;; evil - vim keybindings
 (use-package evil :ensure evil)
+(global-set-key (kbd "<f1>") 'evil-mode)
 
 ;; TODO - key-chord
 
@@ -94,6 +97,9 @@
 ;; Julia
 ;; =======================================================================
 (use-package julia-mode :ensure julia-mode)
+(use-package julia-repl :ensure julia-repl)
+(use-package flycheck-julia :ensure flycheck-julia)
+(add-hook 'julia-mode-hook 'julia-repl-mode)
  
 ;; FUTURE - julia-snail looks really cool, but very alpha, and not Windows ready
 ;; FUTURE - julia-repl for interactive, NOT julia-shell
