@@ -9,15 +9,12 @@ Before you can use this vimrc, make sure to install:
 
 1. [Vundle](https://github.com/VundleVim/Vundle.vim) to
    `~/.vim/bundle/Vundle.vim` so that Plugins can be installed correctly.
-2. [solarized](https://github.com/altercation/vim-colors-solarized) colorscheme to
-   `~/.vim/colors/solarized`. (Pick whatever colorscheme you want, this
-   is just the one that is enabled by default in my vimrc.)
-3. [Powerline fonts](https://github.com/powerline/fonts). For use with
+2. [Powerline fonts](https://github.com/powerline/fonts). For use with
    [Airline](https://github.com/vim-airline/vim-airline). If on windows,
    check out [these instructions](
    https://medium.com/@slmeng/how-to-install-powerline-fonts-in-windows-b2eedecace58)
    for how to install the powerline fonts.
-4. [Python](https://www.python.org) for compiling and using
+3. [Python](https://www.python.org) for compiling and using
    [YouCompleteMe](https://github.com/Valloric/YouCompleteMe). Make sure to grab the
    correct version - use ":version" to check:
    
@@ -27,5 +24,5 @@ Before you can use this vimrc, make sure to install:
      For example, if you see something like "python36.dll" in there, then you need
      Python 3.6)
      
-5. [CMake](https://cmake.org/download/) to compile
+4. [CMake](https://cmake.org/download/) to compile
    [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
