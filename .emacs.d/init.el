@@ -95,6 +95,13 @@
 ;; =======================================================================
 ;; Misc. Key command stuff
 ;; =======================================================================
+(defun find-user-init-file ()
+  "Opens your init file."
+  (interactive)
+  (find-file user-init-file))
+(global-set-key (kbd "C-M-s") 'find-user-init-file)
+
+(global-set-key (kbd "C-S-<del>") 'goto-last-change)
 
 ;; =======================================================================
 ;; Language config sources
@@ -107,15 +114,22 @@
 ;; =======================================================================
 ;; Wishlist
 ;; =======================================================================
-;; TODO highlight matching paren
-;; TODO search for symbol on C-M-S-n
-;; TODO search for class on C-n
-;; TODO hook for electric-pair mode
-;; TODO C-w and C-S-w for syntax-aware expansion/contraction
-;; TODO don't have vim-mode shadow useful key idea-like commands
-;; TODO add hooks for each language in their source files
-;; TODO C-S-j for smart join line
-;; TODO highlight matching instances of word under cursor
+;; modify movement to match normal editors, e.g. ctl-arrow to parens
+;; highlight matching paren
+;; search for symbol on C-M-S-n
+;; search for class on C-n
+;; hook for electric-pair mode
+;; C-w and C-S-w for syntax-aware expansion/contraction
+;; don't have vim-mode shadow useful key idea-like commands
+;; add hooks for each language in their source files
+;; C-S-j for smart join line
+;; highlight matching instances of word under cursor
+;; C-S-<BS> for jump to last edit
+;; M-S-<F9> debug menu
+;; M-S-<F10> run menu
+;; C-q documentation
+;; C-p parameter info
+;; C-S-; fullsize/reset window
 
 (provide 'init)
 ;;; init.el ends here
