@@ -1,3 +1,11 @@
+;;; init.el --- my emacs init
+;;
+;; Author : Robert Enzmann
+;;
+;;; Commentary:
+;; I put this here to make the linter stop whining.
+;;
+;;; Code
 ;; =======================================================================
 ;; Package management
 ;; =======================================================================
@@ -47,6 +55,9 @@
 (global-linum-mode)
 (column-number-mode)
 
+;; Automatically create matching parens in lisp mode
+(add-hook 'lisp-mode (electric-pair-mode t))
+
 
 ;; =======================================================================
 ;; Plugins
@@ -84,7 +95,8 @@
 (setq projectile-completion-system 'helm)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (global-set-key (kbd "C-S-n") 'projectile-find-file)
-
+(setq projectile-enable-caching t)
+(setq projectile-indexing-method 'native)
 
 ;; =======================================================================
 ;; C/C++
@@ -130,6 +142,7 @@
 ;; C-q documentation
 ;; C-p parameter info
 ;; C-S-; fullsize/reset window
+;; Install metals LSP
 
 (provide 'init)
 ;;; init.el ends here
