@@ -58,6 +58,15 @@
 ;; Automatically create matching parens in lisp mode
 (add-hook 'lisp-mode (electric-pair-mode t))
 
+;; Make IDO the default
+(require 'ido)
+(ido-mode t)
+;(setq ido-enable-flex-matching t)
+;(setq ido-everywhere t)
+;(ido-enable 1)
+
+;; Follow symlinks to the real file
+(vc-follow-symlinks t)
 
 ;; =======================================================================
 ;; Plugins
@@ -146,3 +155,17 @@
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (jetbrains-darcula-theme use-package sphinx-doc simpleclip scala-mode sbt-mode python-docstring projectile magit lsp-ui lsp-metals julia-repl helm flycheck-julia evil elpy eglot-jl company-lsp))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
