@@ -66,7 +66,7 @@
 ;(ido-enable 1)
 
 ;; Follow symlinks to the real file
-(vc-follow-symlinks t)
+(setq vc-follow-symlinks t)
 
 ;; =======================================================================
 ;; Plugins
@@ -135,6 +135,7 @@
 ;; =======================================================================
 ;; Wishlist
 ;; =======================================================================
+;; (python) syntax highlighting within {} when inside f-string
 ;; modify movement to match normal editors, e.g. ctl-arrow to parens
 ;; highlight matching paren
 ;; search for symbol on C-M-S-n
