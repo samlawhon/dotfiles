@@ -83,7 +83,7 @@
 
 ;; Version control (magit)
 (use-package magit :ensure magit)
-(global-set-key (kbd "C-k") 'magit)
+(global-set-key (kbd "C-x C-k") 'magit)
 
 ;; evil - vim keybindings
 (use-package evil :ensure evil)
@@ -162,8 +162,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (jetbrains-darcula-theme use-package sphinx-doc simpleclip scala-mode sbt-mode python-docstring projectile magit lsp-ui lsp-metals julia-repl helm flycheck-julia evil elpy eglot-jl company-lsp))))
+   '(jetbrains-darcula-theme use-package sphinx-doc simpleclip scala-mode sbt-mode python-docstring projectile magit lsp-ui lsp-metals julia-repl helm flycheck-julia evil elpy eglot-jl company-lsp)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

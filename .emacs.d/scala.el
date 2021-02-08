@@ -31,7 +31,7 @@
 
 ;; Enable scala-mode for highlighting, indentation and motion commands
 (use-package scala-mode
-  :mode "\\.s\\(c\\(ala\\)|bt\\)"
+  :mode "\\.s\\(c|bt\\)"
   :interpreter
     ("scala" . scala-mode))
 
