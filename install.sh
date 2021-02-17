@@ -8,3 +8,9 @@ do
     ln -nfs $(pwd)/$filename $HOME/$filename
 done
 
+rm -rf $HOME/.config/nvim
+mkdir $HOME/.config/nvim
+for filename in nvim/*
+do
+    ln -nfs $(pwd)/$filename $HOME/.config/$filename
+done
