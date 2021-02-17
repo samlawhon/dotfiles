@@ -1,6 +1,6 @@
-# vimconfig
+# Dotfiles
 
-Storage for .vimrc and other dotfiles.
+Storage for .vimrc and other things.
 
 
 ## Prerequisites
