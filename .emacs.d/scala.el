@@ -1,3 +1,12 @@
+;;; scala.el --- scala config
+;;; Commentary:
+;;; Code
+
+;; =======================================================================
+;; External depencencies
+;; =======================================================================
+(use-package ammonite-term-repl :ensure ammonite-term-repl)
+
 ;; =======================================================================
 ;; Metals
 ;; =======================================================================
@@ -22,6 +31,7 @@
 
 ;; Enable scala-mode for highlighting, indentation and motion commands
 (use-package scala-mode
+  :mode "\\.s\\(c|bt\\)"
   :interpreter
     ("scala" . scala-mode))
 
@@ -74,3 +84,4 @@
   (lsp-mode . dap-ui-mode)
   )
 
+(add-hook 'scala-mode-hook 'electric-pair-mode)

@@ -58,6 +58,15 @@
 ;; Automatically create matching parens in lisp mode
 (add-hook 'lisp-mode (electric-pair-mode t))
 
+;; Make IDO the default
+(require 'ido)
+(ido-mode t)
+;(setq ido-enable-flex-matching t)
+;(setq ido-everywhere t)
+;(ido-enable 1)
+
+;; Follow symlinks to the real file
+(setq vc-follow-symlinks t)
 
 ;; =======================================================================
 ;; Plugins
@@ -74,7 +83,7 @@
 
 ;; Version control (magit)
 (use-package magit :ensure magit)
-(global-set-key (kbd "C-k") 'magit)
+(global-set-key (kbd "C-x C-k") 'magit)
 
 ;; evil - vim keybindings
 (use-package evil :ensure evil)
@@ -126,6 +135,7 @@
 ;; =======================================================================
 ;; Wishlist
 ;; =======================================================================
+;; (python) syntax highlighting within {} when inside f-string
 ;; modify movement to match normal editors, e.g. ctl-arrow to parens
 ;; highlight matching paren
 ;; search for symbol on C-M-S-n
@@ -146,3 +156,16 @@
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(jetbrains-darcula-theme use-package sphinx-doc simpleclip scala-mode sbt-mode python-docstring projectile magit lsp-ui lsp-metals julia-repl helm flycheck-julia evil elpy eglot-jl company-lsp)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

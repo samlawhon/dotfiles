@@ -1,6 +1,7 @@
-;; =======================================================================
-;; Python
-;; =======================================================================
+;;; package --- summary
+;; Python mode configuration
+;;; Commentary:
+;;; Code
 (use-package elpy
   :ensure t
   :config
@@ -14,3 +15,6 @@
   :ensure t
   :hook (python-mode . sphinx-doc-mode))
 
+(add-hook 'python-mode-hook (electric-pair-mode t))
+(provide 'python)
+;;; python.el ends here
