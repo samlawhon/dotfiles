@@ -50,6 +50,7 @@ syntax on
 set linebreak
 set shiftround
 set relativenumber
+set nowrap
 
 colo iceberg
 
@@ -83,8 +84,9 @@ set foldtext=getline(v:foldstart+1)
 let mapleader=" "
 nnoremap <Space> <Nop>
 
-" GLOBAL
-" -----------------------------------------------------------------------------
+" Maybe the most controversial thing in here...
+nnoremap <C-s>                :<C-u>w<CR>
+
 " Getting around
 nnoremap <Leader>g            :YcmCompleter GoToDefinitionElseDeclaration<cr>
 nnoremap <F9>                 :NERDTree<CR>
