@@ -146,8 +146,7 @@ nnoremap <S-F12>              :source $MYVIMRC<CR>
 nnoremap <C-S-F12>            :vs $MYVIMRC<CR>
 
 " Exit or save and exit
-nnoremap <F8>                 :q<CR>
-nnoremap <S-F8>               :wq<CR>
+nnoremap <C-F4>               :q<CR>
 
 " Git commands
 nnoremap <F5>                 :Gstatus<CR><C-w><S-l> <bar> :exe "vertical res 50"<CR>
