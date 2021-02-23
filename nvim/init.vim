@@ -24,6 +24,7 @@ execute 'source' vimdir."/theme.vim"
 execute 'source' vimdir."/styles.vim"
 execute 'source' vimdir."/shortcuts.vim"
 execute 'source' vimdir."/coc.vim"
+execute 'source' vimdir."/airline.vim"
 
 if has("gui_running")
   source ~/repos/dotfiles/nvim/gui.vim

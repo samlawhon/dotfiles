@@ -78,8 +78,8 @@ nnoremap <C-S-F12>            :vs $MYVIMRC<CR>
 nnoremap <C-F4>               :q<CR>
 
 " Git commands
-nnoremap <C-k>                :Gstatus<CR><C-w><S-l> <bar> :exe "vertical res 50"<CR>
-nnoremap <C-S-k>              :<C-u>Git push<CR>
+nnoremap <Leader>gk           :Gstatus<CR><C-w><S-h> <bar> :exe "vertical res 30"<CR>
+nnoremap <Leader>gp           :<C-u>Git push<CR>
 
 " Fullscreen mode for gui
 " nnoremap <F11>                :set lines=999<CR>:set columns=999<CR>
@@ -101,6 +101,5 @@ nnoremap <S-F4>               8gt
 nnoremap <Leader>rp            :silent !python <C-R>%<CR>
 
 " View logs and output
-" TODO this conflicts with table-mode, so we need to find a better map
 nnoremap <Leader>m             :messages<CR>
 
