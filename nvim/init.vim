@@ -1,6 +1,7 @@
-source ~/repos/dotfiles/nvim/pluginstall.vim
+let vimdir=fnamemodify($MYVIMRC, ':p:h')
+execute 'source' vimdir."/pluginstall.vim"
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin(vimdir."/plugged")
 Plug 'cocopon/iceberg.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'nvie/vim-flake8'
@@ -18,7 +19,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 call plug#end()
 
-let vimdir=fnamemodify($MYVIMRC, ':p:h')
 
 execute 'source' vimdir."/theme.vim"
 execute 'source' vimdir."/styles.vim"
