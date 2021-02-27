@@ -17,35 +17,24 @@ nnoremap <Space> <Nop>
 " Maybe the most controversial thing in here...
 nnoremap <C-s>                :<C-u>w<CR>
 
+" Fast escape
+inoremap jk                   <Esc>
+onoremap jk                   <Esc>
+inoremap kj                   <Esc>
+onoremap kj                   <Esc>
+
 " Getting around
-nnoremap <Leader>t            :NERDTree<CR>
+nnoremap <Leader>tn           :NERDTree<CR>
 nnoremap <Leader>j            /# --------------------<CR>zt
 nnoremap <Leader>k            ?# --------------------<CR>zt
-nnoremap <A-l>                <C-w>l
-nnoremap <A-h>                <C-w>h
-nnoremap <A-k>                <C-w>k
-nnoremap <A-j>                <C-w>j
-inoremap jk                   <Esc>
-inoremap kj                   <Esc>
+nnoremap <left>               <C-w>h
+nnoremap <right>              <C-w>l
+nnoremap <up>                 <C-w>k
+nnoremap <down>               <C-w>j
 nnoremap <S-ScrollWheelUp>    <ScrollWheelLeft>
 nnoremap <S-ScrollWheelDown>  <ScrollWheelRight>
 map <S-Down>                  ]mzz
 map <S-Up>                    [mzz
-
-" Editing
-" TODO can we do this C-movement in visual mode for multiple lines?
-nnoremap <C-Up>               ddkP
-nnoremap <C-Down>             ddp
-inoremap <C-J>                <Esc>viwUea
-nnoremap <Leader>"            viw<Esc>a"<Esc>bi"<Esc>lel
-noremap  <Leader>c            :Commentary<CR>
-nnoremap <Leader>p            :TogglePencil<CR>
-onoremap p                    i(
-onoremap in(                  :<C-U>normal! f(vi(<CR>
-onoremap in[                  :<C-U>normal! f[vi[<CR>
-onoremap il(                  :<C-U>normal! F)vi(<CR>
-onoremap il[                  :<C-U>normal! F]vi[<CR>
-onoremap i;                   :<C-U>execute "normal! v/;\rhs"<CR>
 
 " Camel Motion
 map <silent> w <Plug>CamelCaseMotion_w
@@ -56,6 +45,20 @@ sunmap w
 sunmap b
 sunmap e
 sunmap ge
+
+" Editing
+" TODO can we do this C-movement in visual mode for multiple lines?
+nnoremap <C-Up>               ddkP
+nnoremap <C-Down>             ddp
+inoremap <C-J>                <Esc>viwUea
+nnoremap <Leader>"            viw<Esc>a"<Esc>bi"<Esc>lel
+noremap  <Leader>c            :Commentary<CR>
+onoremap p                    i(
+onoremap in(                  :<C-U>normal! f(vi(<CR>
+onoremap in[                  :<C-U>normal! f[vi[<CR>
+onoremap il(                  :<C-U>normal! F)vi(<CR>
+onoremap il[                  :<C-U>normal! F]vi[<CR>
+onoremap i;                   :<C-U>execute "normal! v/;\rhs"<CR>
 
 " Markdown and RST headers
 nnoremap <Leader>1            yypVr=
@@ -68,38 +71,108 @@ onoremap ih                   :<C-U>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_
 nnoremap \                    za
 vnoremap \                    zf
 
-" Refresh or edit .vimrc
-nnoremap <F12>                :tabe $MYVIMRC<CR>
-nnoremap <C-F12>              :e $MYVIMRC<CR>
-nnoremap <S-F12>              :source $MYVIMRC<CR>
-nnoremap <C-S-F12>            :vs $MYVIMRC<CR>
+" =======================================================================
+"                       LEADER LAYERS
+" =======================================================================
+" Pencil
+" -----------------------------------------------------------------------
+nnoremap <Leader>p            :<C-u>TogglePencil<CR>
+nnoremap <Leader>ph           :<C-u>HardPencil<CR>
+nnoremap <Leader>ps           :<C-u>SoftPencil<CR>
+nnoremap <Leader>po           :<C-u>PencilOff<CR>
 
-" Exit or save and exit
-nnoremap <C-F4>               :q<CR>
+" Settings - plugins, keymaps, and individual subsections
+" -----------------------------------------------------------------------
+nnoremap <Leader>si           :<C-u>tabe $MYVIMRC<CR>
+nnoremap <Leader>sk           :<C-u>exe "tabe ".vimdir."/shortcuts.vim"<CR>
+nnoremap <Leader>sc           :<C-u>exe "tabe ".vimdir."/coc.vim"<CR>
+nnoremap <Leader>sl           :<C-u>source $MYVIMRC<CR>
 
 " Git commands
+" -----------------------------------------------------------------------
 nnoremap <Leader>gk           :Gstatus<CR><C-w><S-h> <bar> :exe "vertical res 30"<CR>
-nnoremap <Leader>gp           :<C-u>Git push<CR>
-
-" Fullscreen mode for gui
-" nnoremap <F11>                :set lines=999<CR>:set columns=999<CR>
-nnoremap <F11>                <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
+nnoremap <Leader>g<S-k>       :<C-u>Git push<CR>
 
 " Tab Movement
+" -----------------------------------------------------------------------
 nnoremap <Leader>h            :<C-u>tabp<CR>
 nnoremap <Leader>l            :<C-u>tabn<CR>
-nnoremap <F1>                 1gt
-nnoremap <F2>                 2gt
-nnoremap <F3>                 3gt
-nnoremap <F4>                 4gt
-nnoremap <S-F1>               5gt
-nnoremap <S-F2>               6gt
-nnoremap <S-F3>               7gt
-nnoremap <S-F4>               8gt
 
 " Execute code
-nnoremap <Leader>rp            :silent !python <C-R>%<CR>
+" -----------------------------------------------------------------------
+nnoremap <Leader>rp           :silent !python <C-R>%<CR>
+
+" Vim execution
+" -----------------------------------------------------------------------
+nnoremap <Leader>ve           yy:@"<CR>
 
 " View logs and output
-nnoremap <Leader>m             :messages<CR>
+" -----------------------------------------------------------------------
+nnoremap <Leader>m            :messages<CR>
 
+" Tree commands
+" -----------------------------------------------------------------------
+nnoremap <silent> <Leader>tt  :<C-u>NERDTree<CR>
+" Toggle panel with Tree Views
+nnoremap <silent> <Leader>tm  :<C-u>CocCommand metals.tvp<CR>
+" Toggle Tree View 'metalsPackages'
+nnoremap <silent> <Leader>tp  :<C-u>CocCommand metals.tvp metalsPackages<CR>
+" Toggle Tree View 'metalsCompile'
+nnoremap <silent> <Leader>tc  :<C-u>CocCommand metals.tvp metalsCompile<CR>
+" Toggle Tree View 'metalsBuild'
+nnoremap <silent> <Leader>tb  :<C-u>CocCommand metals.tvp metalsBuild<CR>
+" Reveal current current class (trait or object) in Tree View 'metalsPackages'
+nnoremap <silent> <Leader>tf  :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR>t
+
+" Conqueror of Completion Commands
+" -----------------------------------------------------------------------
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap for rename current word
+nmap <Leader>rn <Plug>(coc-rename)
+
+" Used to expand decorations in worksheets
+nmap <Leader>ws <Plug>(coc-metals-expand-decoration)
+
+" Use K to either doHover or show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Trigger for code actions
+" Make sure `"codeLens.enable": rue` is set in coc config
+nnoremap <Leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
+
+" Applying codeAction to the selected region.
+" Example: `<Leader>aap` for current paragraph
+xmap <Leader>a  <Plug>(coc-codeaction-selected)
+nmap <Leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <Leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <Leader>qf  <Plug>(coc-fix-current)
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <Leader>ca  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <Leader>ce  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <Leader>cc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <Leader>co  :<C-u>CocList outline<cr>
+" Search workLeader symbols.
+nnoremap <silent><nowait> <Leader>cs  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <Leader>cj  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <Leader>ck  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <Leader>cp  :<C-u>CocListResume<CR>
