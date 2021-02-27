@@ -3,8 +3,9 @@ execute 'source' vimdir."/pluginstall.vim"
 
 call plug#begin(vimdir."/plugged")
 Plug 'cocopon/iceberg.vim'
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdtree' |
+  \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+  \ Plug 'ryanoasis/vim-devicons'
 Plug 'nvie/vim-flake8'
 Plug 'w0rp/ale'
 Plug 'reedes/vim-pencil'
