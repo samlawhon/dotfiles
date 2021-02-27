@@ -24,9 +24,6 @@ inoremap kj                   <Esc>
 onoremap kj                   <Esc>
 
 " Getting around
-nnoremap <Leader>tn           :NERDTree<CR>
-nnoremap <Leader>j            /# --------------------<CR>zt
-nnoremap <Leader>k            ?# --------------------<CR>zt
 nnoremap <left>               <C-w>h
 nnoremap <right>              <C-w>l
 nnoremap <up>                 <C-w>k
@@ -90,8 +87,10 @@ nnoremap <Leader>sl           :<C-u>source $MYVIMRC<CR>
 
 " Git commands
 " -----------------------------------------------------------------------
-nnoremap <Leader>gk           :Gstatus<CR><C-w><S-h> <bar> :exe "vertical res 30"<CR>
+nnoremap <Leader>gk           :<C-u>Gstatus<CR><C-w><S-h> <bar> :exe "vertical res 30"<CR>
 nnoremap <Leader>g<S-k>       :<C-u>Git push<CR>
+nnoremap <Leader>gf           :<C-u>Git fetch<CR>
+nnoremap <Leader>gF           :<C-u>Git pull<CR>
 
 " Tab Movement
 " -----------------------------------------------------------------------
@@ -110,19 +109,19 @@ nnoremap <Leader>ve           yy:@"<CR>
 " -----------------------------------------------------------------------
 nnoremap <Leader>m            :messages<CR>
 
-" Tree commands
+" File tree commands
 " -----------------------------------------------------------------------
-nnoremap <silent> <Leader>tt  :<C-u>NERDTree<CR>
+nnoremap <silent> <Leader>ft  :<C-u>NERDTree<CR>
 " Toggle panel with Tree Views
-nnoremap <silent> <Leader>tm  :<C-u>CocCommand metals.tvp<CR>
+nnoremap <silent> <Leader>fm  :<C-u>CocCommand metals.tvp<CR>
 " Toggle Tree View 'metalsPackages'
-nnoremap <silent> <Leader>tp  :<C-u>CocCommand metals.tvp metalsPackages<CR>
+nnoremap <silent> <Leader>fp  :<C-u>CocCommand metals.tvp metalsPackages<CR>
 " Toggle Tree View 'metalsCompile'
-nnoremap <silent> <Leader>tc  :<C-u>CocCommand metals.tvp metalsCompile<CR>
+nnoremap <silent> <Leader>fc  :<C-u>CocCommand metals.tvp metalsCompile<CR>
 " Toggle Tree View 'metalsBuild'
-nnoremap <silent> <Leader>tb  :<C-u>CocCommand metals.tvp metalsBuild<CR>
+nnoremap <silent> <Leader>fb  :<C-u>CocCommand metals.tvp metalsBuild<CR>
 " Reveal current current class (trait or object) in Tree View 'metalsPackages'
-nnoremap <silent> <Leader>tf  :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR>t
+nnoremap <silent> <Leader>ff  :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR>t
 
 " Conqueror of Completion Commands
 " -----------------------------------------------------------------------
