@@ -113,6 +113,8 @@ nnoremap <Leader>m            :messages<CR>
 " [f]ile tree commands
 " -----------------------------------------------------------------------
 nnoremap <silent> <Leader>ft  :<C-u>NERDTree<CR>
+" Open/close NERDTree at the current buffer
+nnoremap <silent> <expr> <Leader>fn g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 " Toggle panel with Tree Views
 nnoremap <silent> <Leader>fm  :<C-u>CocCommand metals.tvp<CR>
 " Toggle Tree View 'metalsPackages'
