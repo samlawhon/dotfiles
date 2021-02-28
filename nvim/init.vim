@@ -6,6 +6,8 @@ Plug 'cocopon/iceberg.vim'
 Plug 'preservim/nerdtree' |
   \ Plug 'Xuyuanp/nerdtree-git-plugin' |
   \ Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree-project-plugin'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'nvie/vim-flake8'
 Plug 'w0rp/ale'
 Plug 'reedes/vim-pencil'
