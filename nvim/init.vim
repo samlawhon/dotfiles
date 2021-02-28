@@ -29,6 +29,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Scala plugins
 Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 " Python plugins
+" TODO hook to install after pyright
+Plug 'fannheyward/coc-pyright'
 Plug 'nvie/vim-flake8'
 Plug 'w0rp/ale'
 call plug#end()
