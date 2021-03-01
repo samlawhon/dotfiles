@@ -32,4 +32,6 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+" Recommended by the nerdtree-git-plugin docs
+let g:NERDTreeGitStatusUseNerdFonts = 1
 

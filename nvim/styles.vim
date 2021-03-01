@@ -11,6 +11,10 @@ augroup pep8
     \ softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent nohlsearch
 augroup END
 
+" Json
+" ----
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
 " R
 " -
 augroup r_lang

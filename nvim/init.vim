@@ -1,32 +1,51 @@
-source ~/repos/dotfiles/nvim/pluginstall.vim
+let g:vimdir=fnamemodify($MYVIMRC, ':p:h')
 
-call plug#begin('~/.config/nvim/plugged')
+function SourceVimdirFile(filename)
+  execute 'source' g:vimdir."/".a:filename
+endfunction
+
+call SourceVimdirFile("pluginstall.vim")
+
+call plug#begin(vimdir."/plugged")
 Plug 'cocopon/iceberg.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'nvie/vim-flake8'
-Plug 'w0rp/ale'
-Plug 'reedes/vim-pencil'
+Plug 'preservim/nerdtree' |
+  \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+  \ Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree-project-plugin'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tmsvg/pear-tree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bkad/CamelCaseMotion'
 Plug 'PProvost/vim-ps1'
 Plug 'dhruvasagar/vim-table-mode'
+" Completion engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-surround'
+" Scala plugins
+Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
+" Python plugins
+" TODO hook to install after pyright
+Plug 'fannheyward/coc-pyright'
+Plug 'nvie/vim-flake8'
+Plug 'w0rp/ale'
 call plug#end()
 
-let vimdir=fnamemodify($MYVIMRC, ':p:h')
 
-execute 'source' vimdir."/theme.vim"
-execute 'source' vimdir."/styles.vim"
-execute 'source' vimdir."/shortcuts.vim"
-execute 'source' vimdir."/coc.vim"
-execute 'source' vimdir."/airline.vim"
+call SourceVimdirFile("functionality.vim")
+call SourceVimdirFile("theme.vim")
+call SourceVimdirFile("styles.vim")
+call SourceVimdirFile("coc.vim")
+call SourceVimdirFile("airline.vim")
+
+" Key bindings defined in the "shortcuts" file should always take precedence
+call SourceVimdirFile("shortcuts.vim")
 
 if has("gui_running")
-  source ~/repos/dotfiles/nvim/gui.vim
+  call SourceVimdirFile("gui.vim")
 endif
 
