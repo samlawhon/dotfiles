@@ -1,0 +1,41 @@
+let mapleader=" "
+nnoremap <Space> <Nop>
+
+" Fast escape
+omap jk                       <Esc>
+omap kj                       <Esc>
+imap jk                       <Esc>
+imap kj                       <Esc>
+
+" Faster scrolling
+nnoremap <C-E> 2<C-E>
+nnoremap <C-Y> 2<C-Y>
+
+" Maybe the most controversial thing in here...
+nnoremap <C-s>                :<C-u>w<CR>
+
+" Bindings to IDE actions
+nnoremap /                    :action Find<CR>
+nnoremap n                    :action FindNext<CR>
+nnoremap N                    :action FindPrevious<CR>
+nnoremap U                    :action $Redo<CR><CR>
+nnoremap <leader>vm           :action VimPluginToggle<CR>
+" [s]ettings
+" [n]avigation
+nnoremap <leader>nc           :action GotoClass<CR>
+nnoremap <leader>nf           :action GotoFile<CR>
+nnoremap <leader>ns           :action GotoSymbol<CR>
+" [g]it operations
+" [d]ebug
+nnoremap <leader>dd           :action Debug<CR>
+nnoremap <leader>dn           :action ChooseDebugConfiguration<CR>
+" [r]un
+nnoremap <leader>rr           :action Run<CR>
+nnoremap <leader>re           :action Rerun<CR>
+nnoremap <leader>rn           :action ChooseRunConfiguration<CR>
+" [f]iletree
+nnoremap <leader>ft           :action ActivateProjectToolWindow<CR>
+" Clip[b]oard
+nnoremap <leader>bc           :action $Copy<CR>
+nnoremap <leader>bx           :action $Cut<CR>
+nnoremap <leader>bv           :action $Paste<CR>
