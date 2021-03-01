@@ -26,6 +26,8 @@ nnoremap <leader>nc           :action GotoClass<CR>
 nnoremap <leader>nf           :action GotoFile<CR>
 nnoremap <leader>ns           :action GotoSymbol<CR>
 " [g]it operations
+nnoremap <leader>gk           :action Git.Show.Stage<CR>
+nnoremap <leader>gK           :action Vcs.Push<CR>
 " [d]ebug
 nnoremap <leader>dd           :action Debug<CR>
 nnoremap <leader>dn           :action ChooseDebugConfiguration<CR>
