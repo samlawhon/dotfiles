@@ -1,6 +1,12 @@
 let mapleader=" "
 nnoremap <Space> <Nop>
 
+" Enable vim-surround emulation
+set surround
+
+" Enable NERDTree emulation
+set NERDTree
+
 " Fast escape
 omap jk                       <Esc>
 omap kj                       <Esc>
@@ -20,24 +26,41 @@ nnoremap n                    :action FindNext<CR>
 nnoremap N                    :action FindPrevious<CR>
 nnoremap U                    :action $Redo<CR><CR>
 nnoremap <leader>vm           :action VimPluginToggle<CR>
+" [e]xecute
+nnoremap <leader>e            :action ExecuteInPyConsoleAction<CR>
 " [s]ettings
+nnoremap <leader>s            :action ShowSettings<CR>
 " [n]avigation
 nnoremap <leader>nc           :action GotoClass<CR>
 nnoremap <leader>nf           :action GotoFile<CR>
 nnoremap <leader>ns           :action GotoSymbol<CR>
+nnoremap <leader>nb           :action ShowNavBar<CR>
+nnoremap <leader>nd           :action ActivateSciViewToolWindow<CR>
+" [p]ython operations
+nnoremap <leader>pn           :action NewPythonFile<CR>
 " [g]it operations
 nnoremap <leader>gk           :action Git.Show.Stage<CR>
 nnoremap <leader>gK           :action Vcs.Push<CR>
+nnoremap <leader>gb           :action Git.Branches<CR>
 " [d]ebug
 nnoremap <leader>dd           :action Debug<CR>
 nnoremap <leader>dn           :action ChooseDebugConfiguration<CR>
+nnoremap <leader>dc           :action ActivateDebugToolWindow<CR>
+nnoremap <leader>dp           :action ToggleLineBreakpoint<CR>
 " [r]un
 nnoremap <leader>rr           :action Run<CR>
 nnoremap <leader>re           :action Rerun<CR>
 nnoremap <leader>rn           :action ChooseRunConfiguration<CR>
+nnoremap <leader>rc           :action ActivateRunToolWindow<CR>
+nnoremap <leader>rs           :action Stop<CR>
+" [t]erminal/console
+nnoremap <leader>tt           :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>tp           :action ActivatePythonConsoleToolWindow<CR>
 " [f]iletree
 nnoremap <leader>ft           :action ActivateProjectToolWindow<CR>
 " Clip[b]oard
 nnoremap <leader>bc           :action $Copy<CR>
 nnoremap <leader>bx           :action $Cut<CR>
 nnoremap <leader>bv           :action $Paste<CR>
+" e[x]ternal tools (remote run/debug/console/terminals)
+nnoremap <leader>xt           :action ActivateRemoteHostToolWindow <CR>
