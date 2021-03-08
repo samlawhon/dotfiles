@@ -18,10 +18,10 @@ nnoremap <Space> <Nop>
 nnoremap <C-s>                :<C-u>w<CR>
 
 " Fast escape
-inoremap jk                   <Esc>
-onoremap jk                   <Esc>
-inoremap kj                   <Esc>
-onoremap kj                   <Esc>
+imap jk                       <Esc>
+omap jk                       <Esc>
+imap kj                       <Esc>
+omap kj                       <Esc>
 
 " Getting around
 nnoremap <left>               <C-w>h

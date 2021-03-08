@@ -48,4 +48,3 @@ call SourceVimdirFile("shortcuts.vim")
 if has("gui_running")
   call SourceVimdirFile("gui.vim")
 endif
-
