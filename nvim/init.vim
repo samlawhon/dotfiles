@@ -22,6 +22,7 @@ Plug 'tpope/vim-surround'
 Plug 'tmsvg/pear-tree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bkad/CamelCaseMotion'
+Plug 'jpalardy/vim-slime'
 Plug 'PProvost/vim-ps1'
 Plug 'dhruvasagar/vim-table-mode'
 " Completion engine
@@ -33,6 +34,9 @@ Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-pyright'
 Plug 'nvie/vim-flake8'
 Plug 'w0rp/ale'
+" Julia plugins
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 call plug#end()
 
 
