@@ -144,9 +144,6 @@ nmap <Leader>rn <Plug>(coc-rename)
 " Used to expand decorations in worksheets
 nmap <Leader>ws <Plug>(coc-metals-expand-decoration)
 
-" Use K to either doHover or show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 " Trigger for code actions
 " Make sure `"codeLens.enable": rue` is set in coc config
 nnoremap <Leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
