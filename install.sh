@@ -36,7 +36,7 @@ do
 done
 
 
-for filename in .emacs.d/* .bashrc .profile .pylintrc
+for filename in .emacs.d/* .bashrc .profile .pylintrc .ideavimrc
 do
     ln -nfs $(pwd)/$filename $HOME/$filename
 done
