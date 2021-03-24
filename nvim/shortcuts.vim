@@ -49,7 +49,7 @@ nnoremap <C-Up>               ddkP
 nnoremap <C-Down>             ddp
 inoremap <C-J>                <Esc>viwUea
 nnoremap <Leader>"            viw<Esc>a"<Esc>bi"<Esc>lel
-noremap  <Leader>c            :Commentary<CR>
+noremap  <Leader>/            :Commentary<CR>
 onoremap p                    i(
 onoremap in(                  :<C-U>normal! f(vi(<CR>
 onoremap in[                  :<C-U>normal! f[vi[<CR>
