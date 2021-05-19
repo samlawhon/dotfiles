@@ -76,3 +76,5 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Make <C-q> work in vim
+stty start undef
