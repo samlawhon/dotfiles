@@ -1,9 +1,4 @@
 " =============================================================================
-"                           EARLY STACK VARIABLES
-" =============================================================================
-
-
-" =============================================================================
 "                             PLUGIN MANAGEMENT
 " =============================================================================
 set nocompatible
@@ -13,8 +8,6 @@ set rtp+=~/.vim/colors
 call vundle#begin()
 "--------------------- Add plugins below this line ---------------------------"
 Plugin 'cocopon/iceberg.vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'altercation/solarized'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'nvie/vim-flake8'
@@ -57,9 +50,7 @@ set linebreak
 set shiftround
 set relativenumber
 
-if has("gui_running")
-  colo iceberg
-endif
+colo iceberg
 
 if &term =~ '256color'
   " disable background color erase (bce) so that color schemes
