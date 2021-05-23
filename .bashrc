@@ -67,7 +67,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ra="./run-all.sh"
 alias robbo="source ~/.venv/bin/activate"
-alias fd='bob=$(fzf) && litecli $bob'
+alias fd='litecli $(fzf)'
 
 if [ ! -x $HOME/.fzf ]; then
     git clone --depth 1 git@github.com:junegunn/fzf.git ~/.fzf
@@ -78,3 +78,5 @@ fi
 
 # Make <C-q> work in vim
 stty start undef
+# Don't hang on ctrl-s https://unix.stackexchange.com/a/12108
+stty -ixon
