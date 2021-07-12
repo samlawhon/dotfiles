@@ -3,10 +3,10 @@ cd ~
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
 
-if [[ ! -z $(awk '$0 == "alias nvim=~/nvim.appimage"' ~/.bashrc) ]]; then
+if [[ -z $(grep 'alias nvim=' ~/.bashrc) ]]; then
     echo "alias nvim='~/nvim.appimage'" >> ~/.bashrc
 else
-    echo "alias already in ~/.bashrc"
+    echo "alias for 'nvim' already in ~/.bashrc"
 fi
 
 sudo npm install -g bash-language-server
