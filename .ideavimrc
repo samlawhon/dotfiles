@@ -4,8 +4,18 @@ nnoremap <Space> <Nop>
 " Enable vim-surround emulation
 set surround
 
+" Relative line numbers for fast jumps
+set relativenumber
+set number
+
 " Enable NERDTree emulation
 set NERDTree
+
+" Highlight searches as we go
+set incsearch
+set hlsearch
+" Use <C-L> to clear the highlighting of :set hlsearch.
+nnoremap <silent> <C-L> :nohlsearch<C-R>
 
 " Fast escape
 omap jk                       <Esc>
@@ -21,27 +31,32 @@ nnoremap <C-Y> 2<C-Y>
 nnoremap <C-s>                :<C-u>w<CR>
 
 " Bindings to IDE actions
-nnoremap /                    :action Find<CR>
-nnoremap n                    :action FindNext<CR>
-nnoremap N                    :action FindPrevious<CR>
+" nnoremap /                    :action Find<CR>
+" nnoremap n                    :action FindNext<CR>
+" nnoremap N                    :action FindPrevious<CR>
 nnoremap U                    :action $Redo<CR><CR>
 nnoremap <leader>vm           :action VimPluginToggle<CR>
+nnoremap <leader>l            :action NextTab<CR>
+nnoremap <leader>h            :action PreviousTab<CR>
 " [e]xecute
 nnoremap <leader>e            :action ExecuteInPyConsoleAction<CR>
+vnoremap <leader>e            :action ExecuteInPyConsoleAction<CR>
 " [s]ettings
 nnoremap <leader>s            :action ShowSettings<CR>
-" [n]avigation
-nnoremap <leader>nc           :action GotoClass<CR>
-nnoremap <leader>nf           :action GotoFile<CR>
-nnoremap <leader>ns           :action GotoSymbol<CR>
-nnoremap <leader>nb           :action ShowNavBar<CR>
-nnoremap <leader>nd           :action ActivateSciViewToolWindow<CR>
+" navigation
+nnoremap <leader>c            :action GotoClass<CR>
+nnoremap <leader>f            :action GotoFile<CR>
+nnoremap <leader>d            :action FindInPath<CR>
+nnoremap <leader>t            :action GotoSymbol<CR>
+nnoremap <leader>n            :action ShowNavBar<CR>
+nnoremap <leader>v            :action ActivateSciViewToolWindow<CR>
 " [p]ython operations
 nnoremap <leader>pn           :action NewPythonFile<CR>
-" [g]it operations
+" [g]it/[g]o operations
 nnoremap <leader>gk           :action Git.Show.Stage<CR>
 nnoremap <leader>gK           :action Vcs.Push<CR>
 nnoremap <leader>gb           :action Git.Branches<CR>
+nnoremap <leader>gd           :action
 " [d]ebug
 nnoremap <leader>dd           :action Debug<CR>
 nnoremap <leader>dn           :action ChooseDebugConfiguration<CR>
@@ -56,11 +71,15 @@ nnoremap <leader>rs           :action Stop<CR>
 " [t]erminal/console
 nnoremap <leader>tt           :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>tp           :action ActivatePythonConsoleToolWindow<CR>
+nnpremap <leader>td           :action ActivateDebugToolWindow<CR>
+nnoremap <leader>ts           :action com.jetbrains.plugins.remotesdk.console.RunSshConsoleAction<CR>
 " [f]iletree
 nnoremap <leader>ft           :action ActivateProjectToolWindow<CR>
 " Clip[b]oard
 nnoremap <leader>bc           :action $Copy<CR>
+vnoremap <leader>bc           :action $Copy<CR>
 nnoremap <leader>bx           :action $Cut<CR>
 nnoremap <leader>bv           :action $Paste<CR>
+vnoremap <leader>bv           :action $Paste<CR>
 " e[x]ternal tools (remote run/debug/console/terminals)
 nnoremap <leader>xt           :action ActivateRemoteHostToolWindow <CR>
