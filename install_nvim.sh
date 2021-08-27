@@ -23,3 +23,5 @@ pip install flake8
 deactivate
 
 cd -
+
+source ~/.bashrc
