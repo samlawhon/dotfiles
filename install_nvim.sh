@@ -1,6 +1,6 @@
 cd ~
 
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
 chmod u+x nvim.appimage
 
 if [[ -z $(grep 'alias nvim=' ~/.bashrc) ]]; then
