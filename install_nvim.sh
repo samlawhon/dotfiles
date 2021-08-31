@@ -3,25 +3,40 @@ cd ~
 curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
 chmod u+x nvim.appimage
 
-if [[ -z $(grep 'alias nvim=' ~/.bashrc) ]]; then
+if [ -z $(grep 'alias nvim=' ~/.bashrc) ]; then
     echo "alias nvim='~/nvim.appimage'" >> ~/.bashrc
 else
     echo "alias for 'nvim' already in ~/.bashrc"
 fi
 
+if [ ! -d ~/.vim ]; then
+    git clone --recursive git@github.com:renzmann/.vim ~/.vim
+elif [ -e ~/.vim/vimrc ] && [ ! -z "$(grep '" Author: Robert A. Enzmann' ~/.vim/vimrc)" ]; then
+    echo "Pulling changes from .vim repo"
+    cd ~/.vim && git pull
+    cd ~
+else
+    echo "~/.vim already exists and isn't Robb's - not doing anything!"
+fi
+
+if [ ! -d ~/.config/nvim ]; then
+    git clone --recursive git@github.com:renzmann/config-nvim ~/.config/nvim
+elif [ -e ~/.config/nvim/init.vim ] && [ ! -z "$(grep '" Author: Robert A. Enzmann' ~/.config/nvim/init.vim)" ]; then
+    echo "Pulling changes from nvim repo"
+    cd ~/.vim && git pull
+    cd ~
+else
+    echo "~/.config/nvim already exists and isn't Robb's - not doing anything!"
+fi
+
 sudo npm install -g bash-language-server
 sudo npm install -g pyright
 
-git clone --recursive git@github.com:renzmann/.vim ~/.vim
-git clone --recursive git@github.com:renzmann/config-nvim ~/.config/nvim
+if [ ! -d ~/.nvim.venv ]; then
+    python3 -m venv .nvim.venv
+fi
 
-python3 -m venv .nvim.venv
-source ./.nvim.venv/bin/activate
-pip install black
-pip install neovim
-pip install flake8
-deactivate
+source ./.nvim.venv/bin/activate && pip install --upgrade pip black neovim flake8 && deactivate
 
-cd -
-
+cd ~
 source ~/.bashrc
