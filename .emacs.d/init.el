@@ -100,14 +100,14 @@
 ;; =======================================================================
 ;; Projectile - Project Management
 ;; =======================================================================
-(use-package helm :ensure t)
-(use-package projectile :ensure t)
-(projectile-mode)
-(setq projectile-completion-system 'helm)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(global-set-key (kbd "C-S-n") 'projectile-find-file)
-(setq projectile-enable-caching t)
-(setq projectile-indexing-method 'native)
+;(use-package helm :ensure t)
+;(use-package projectile :ensure t)
+;(projectile-mode)
+;(setq projectile-completion-system 'helm)
+;(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;(global-set-key (kbd "C-S-n") 'projectile-find-file)
+;(setq projectile-enable-caching t)
+;(setq projectile-indexing-method 'native)
 
 ;; =======================================================================
 ;; C/C++
@@ -129,45 +129,6 @@
 ;; =======================================================================
 ;; Language config sources
 ;; =======================================================================
-(load-file (concat user-emacs-directory "scala.el"))
-(load-file (concat user-emacs-directory "python.el"))
-(load-file (concat user-emacs-directory "julia.el"))
-
-
-;; =======================================================================
-;; Wishlist
-;; =======================================================================
-;; (python) syntax highlighting within {} when inside f-string
-;; modify movement to match normal editors, e.g. ctl-arrow to parens
-;; highlight matching paren
-;; search for symbol on C-M-S-n
-;; search for class on C-n
-;; hook for electric-pair mode
-;; C-w and C-S-w for syntax-aware expansion/contraction
-;; don't have vim-mode shadow useful key idea-like commands
-;; add hooks for each language in their source files
-;; C-S-j for smart join line
-;; highlight matching instances of word under cursor
-;; C-S-<BS> for jump to last edit
-;; M-S-<F9> debug menu
-;; M-S-<F10> run menu
-;; C-q documentation
-;; C-p parameter info
-;; C-S-; fullsize/reset window
-;; Install metals LSP
-
-(provide 'init)
-;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(yaml-mode jetbrains-darcula-theme use-package sphinx-doc simpleclip scala-mode sbt-mode python-docstring projectile magit lsp-ui lsp-metals julia-repl helm flycheck-julia evil elpy eglot-jl company-lsp)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;(load-file (concat user-emacs-directory "scala.el"))
+;(load-file (concat user-emacs-directory "python.el"))
+;(load-file (concat user-emacs-directory "julia.el"))
