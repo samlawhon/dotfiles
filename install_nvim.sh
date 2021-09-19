@@ -38,5 +38,14 @@ fi
 
 source ./.nvim.venv/bin/activate && pip install --upgrade pip black neovim flake8 && deactivate
 
-cd ~
+cd $HOME
+
+# Install correct version of fzf
+if [ ! -x $HOME/.fzf ]; then
+    git clone --depth 1 git@github.com:junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 source ~/.bashrc
