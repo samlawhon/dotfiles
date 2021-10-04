@@ -31,6 +31,7 @@ fi
 
 sudo npm install -g bash-language-server
 sudo npm install -g pyright
+sudo npm install -g yaml-language-server
 
 if [ ! -d ~/.nvim.venv ]; then
     python3 -m venv .nvim.venv
