@@ -1,6 +1,6 @@
 cd ~
 
-curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
+curl -LO https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage
 chmod u+x nvim.appimage
 
 if [ -z $(grep 'alias nvim=' ~/.bashrc) ]; then
@@ -31,6 +31,7 @@ fi
 
 sudo npm install -g bash-language-server
 sudo npm install -g pyright
+sudo npm install -g yaml-language-server
 
 if [ ! -d ~/.nvim.venv ]; then
     python3 -m venv .nvim.venv
@@ -38,5 +39,14 @@ fi
 
 source ./.nvim.venv/bin/activate && pip install --upgrade pip black neovim flake8 && deactivate
 
-cd ~
+cd $HOME
+
+# Install correct version of fzf
+if [ ! -x $HOME/.fzf ]; then
+    git clone --depth 1 git@github.com:junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 source ~/.bashrc

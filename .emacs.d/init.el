@@ -100,14 +100,14 @@
 ;; =======================================================================
 ;; Projectile - Project Management
 ;; =======================================================================
-(use-package helm :ensure t)
-(use-package projectile :ensure t)
-(projectile-mode)
-(setq projectile-completion-system 'helm)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(global-set-key (kbd "C-S-n") 'projectile-find-file)
-(setq projectile-enable-caching t)
-(setq projectile-indexing-method 'native)
+;(use-package helm :ensure t)
+;(use-package projectile :ensure t)
+;(projectile-mode)
+;(setq projectile-completion-system 'helm)
+;(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;(global-set-key (kbd "C-S-n") 'projectile-find-file)
+;(setq projectile-enable-caching t)
+;(setq projectile-indexing-method 'native)
 
 ;; =======================================================================
 ;; C/C++
