@@ -90,10 +90,10 @@
 (global-set-key (kbd "C-;") 'evil-mode)
 
 ;; Color theme
-(use-package jetbrains-darcula-theme
-  :ensure jetbrains-darcula-theme
+(use-package gruvbox-theme
+  :ensure gruvbox-theme
   :config
-  (load-theme 'jetbrains-darcula t))
+  (load-theme 'gruvbox-dark-medium t))
 
 (use-package yaml-mode :ensure yaml-mode)
 
@@ -129,7 +129,6 @@
 ;; =======================================================================
 ;; Language config sources
 ;; =======================================================================
-(load-file (concat user-emacs-directory "scala.el"))
 (load-file (concat user-emacs-directory "python.el"))
 (load-file (concat user-emacs-directory "julia.el"))
 
@@ -154,20 +153,6 @@
 ;; C-q documentation
 ;; C-p parameter info
 ;; C-S-; fullsize/reset window
-;; Install metals LSP
 
 (provide 'init)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(yaml-mode jetbrains-darcula-theme use-package sphinx-doc simpleclip scala-mode sbt-mode python-docstring projectile magit lsp-ui lsp-metals julia-repl helm flycheck-julia evil elpy eglot-jl company-lsp)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
