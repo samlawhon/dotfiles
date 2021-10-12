@@ -15,7 +15,7 @@ set NERDTree
 set incsearch
 set hlsearch
 " Use <C-L> to clear the highlighting of :set hlsearch.
-nnoremap <silent> <C-L> :nohlsearch<C-R>
+nnoremap <silent> <C-L> :nohlsearch<CR>
 
 " Fast escape
 omap jk                       <Esc>
