@@ -1,17 +1,22 @@
+#!/usr/bin/env zsh
+
 cd ~
 
 curl -LO https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage
 chmod u+x nvim.appimage
 
-if [ -z $(grep 'alias nvim=' ~/.bashrc) ]; then
-    echo "alias nvim='~/nvim.appimage'" >> ~/.bashrc
+cat ~/dotfiles/.zshrc >> ~/.zshrc
+
+if [ -z $(grep 'alias nvim=' ~/.zshrc) ]; then
+    echo "alias nvim='~/nvim.appimage'" >> ~/.zshrc
 else
-    echo "alias for 'nvim' already in ~/.bashrc"
+    echo "alias for 'nvim' already in ~/.zshrc"
 fi
 
 if [ ! -d ~/.vim ]; then
-    git clone --recursive git@github.com:renzmann/.vim ~/.vim
-elif [ -e ~/.vim/vimrc ] && [ ! -z "$(grep '" Author: Robert A. Enzmann' ~/.vim/vimrc)" ]; then
+    echo "Cloning Sam's .vim to ~/.vim"
+    git clone git@github.com:samlawhon/.vim.git ~/.vim
+elif [ -e ~/.vim/vimrc ] && [ ! -z "$(grep 'Robert A. Enzmann' ~/.vim/vimrc)" ]; then
     echo "Pulling changes from .vim repo"
     cd ~/.vim && git pull
     cd ~
@@ -21,7 +26,7 @@ fi
 
 if [ ! -d ~/.config/nvim ]; then
     git clone --recursive git@github.com:renzmann/config-nvim ~/.config/nvim
-elif [ -e ~/.config/nvim/init.vim ] && [ ! -z "$(grep '" Author: Robert A. Enzmann' ~/.config/nvim/init.vim)" ]; then
+elif [ -e ~/.config/nvim/init.vim ] && [ ! -z "$(grep 'Robert A. Enzmann' ~/.config/nvim/init.vim)" ]; then
     echo "Pulling changes from nvim repo"
     cd ~/.vim && git pull
     cd ~
@@ -47,6 +52,7 @@ if [ ! -x $HOME/.fzf ]; then
     ~/.fzf/install
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/.bashrc
+source ~/.zshrc
+
