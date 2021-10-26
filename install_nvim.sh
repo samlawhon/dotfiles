@@ -7,6 +7,8 @@ chmod u+x nvim.appimage
 
 cat ~/dotfiles/.zshrc >> ~/.zshrc
 
+cp ~/dotfiles/.tmux.conf ~
+
 if [ -z $(grep 'alias nvim=' ~/.zshrc) ]; then
     echo "alias nvim='~/nvim.appimage'" >> ~/.zshrc
 else
