@@ -27,7 +27,7 @@ else
 fi
 
 if [ ! -d ~/.config/nvim ]; then
-    git clone --recursive git@github.com:renzmann/config-nvim ~/.config/nvim
+    git clone --recursive git@github.com:samlawhon/config-nvim ~/.config/nvim
 elif [ -e ~/.config/nvim/init.vim ] && [ ! -z "$(grep 'Robert A. Enzmann' ~/.config/nvim/init.vim)" ]; then
     echo "Pulling changes from nvim repo"
     cd ~/.vim && git pull
